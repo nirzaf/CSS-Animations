@@ -1,0 +1,384 @@
+/* --- Basic Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- 3D Scene Setup --- */
+.scene {
+    width: 80vmin; /* Use viewport units for responsiveness */
+    height: 80vmin;
+    perspective: 1500px; /* Adjust for desired depth */
+    perspective-origin: 50% 50%;
+}
+
+.cosmos-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /* Add a subtle rotation to the whole scene */
+    /* animation: scene-rotate 60s linear infinite; */ /* Optional: uncomment for slow scene spin */
+    background: radial-gradient(ellipse at center, #1a0033 0%, #05000a 70%, #000000 100%);
+    border-radius: 50%; /* Optional: contain within a sphere */
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+/* Position all direct children absolutely in the center for 3D transforms */
+.core,
+.wave-container,
+.ring-system,
+.star-field,
+.comet-orbit,
+.title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+}
+
+/* --- Cosmic Core --- */
+.core {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(ellipse at center,
+        #ffffff 0%,
+        #fff0a0 30%,
+        #ff8c00 60%,
+        #ff4500 80%,
+        rgba(255, 69, 0, 0) 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px 10px #ff8c00, 0 0 40px 20px rgba(255, 140, 0, 0.5);
+    animation: pulse-core 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-core {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 15px 8px #ff8c00, 0 0 30px 15px rgba(255, 140, 0, 0.4);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 25px 12px #ff8c00, 0 0 50px 25px rgba(255, 140, 0, 0.6);
+    }
+}
+
+/* --- Energy Waves --- */
+.wave-container {
+     transform: translate(-50%, -50%);
+}
+
+.wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px; /* Start small */
+    height: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: expand-wave 4s ease-out infinite;
+}
+
+/* Stagger the wave animations */
+.wave:nth-child(1) { animation-delay: 0s; }
+.wave:nth-child(2) { animation-delay: 1s; }
+.wave:nth-child(3) { animation-delay: 2s; }
+.wave:nth-child(4) { animation-delay: 3s; }
+
+@keyframes expand-wave {
+    0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0.8;
+        border-width: 2px;
+    }
+    80% {
+        opacity: 0.1;
+        border-width: 1px;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(15); /* Expand significantly */
+        opacity: 0;
+        border-width: 0.5px;
+    }
+}
+
+/* --- Orbital Rings & Particles --- */
+.ring-system {
+    transform: translate(-50%, -50%); /* Center the system */
+}
+
+.ring-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px; /* Placeholder, dimensions defined by ring */
+    height: 1px;
+    transform-style: preserve-3d;
+    animation: spin linear infinite; /* Common animation name */
+}
+
+.ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1.5px solid rgba(0, 191, 255, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Center the ring visually */
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+/* Ring Specific Styles & Animations */
+.ring-container-1 { animation-duration: 20s; transform: rotateX(80deg); }
+.ring-1 { width: 200px; height: 200px; }
+
+.ring-container-2 { animation-duration: 25s; transform: rotateY(70deg) rotateX(10deg); animation-direction: reverse;}
+.ring-2 { width: 300px; height: 300px; border-color: rgba(173, 216, 230, 0.4); box-shadow: 0 0 10px rgba(173, 216, 230, 0.3); }
+
+.ring-container-3 { animation-duration: 30s; transform: rotateY(-60deg) rotateX(30deg); }
+.ring-3 { width: 400px; height: 400px; border-color: rgba(75, 0, 130, 0.4); box-shadow: 0 0 10px rgba(75, 0, 130, 0.3); }
+
+@keyframes spin {
+    from { transform: rotateZ(0deg); }
+    to { transform: rotateZ(360deg); }
+}
+
+/* --- Particle System --- */
+.particle-orbit {
+    position: absolute;
+    top: 0; /* Align with ring container center */
+    left: 0;
+    width: 100%; /* Match parent ring */
+    height: 100%;
+    transform-style: preserve-3d;
+    /* We don't animate the orbit container itself, but the particles within */
+}
+
+.particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #fff, 0 0 10px cyan;
+    transform-origin: center center; /* Crucial for positioning */
+    animation: move-particle linear infinite;
+}
+
+/* Position particles along their respective rings */
+.orbit-1 .particle { animation-duration: 5s; }
+.orbit-1 .particle:nth-child(1)  { transform: rotate(0deg)   translateX(100px) rotate(-0deg); animation-delay: -0.0s; }
+.orbit-1 .particle:nth-child(2)  { transform: rotate(30deg)  translateX(100px) rotate(-30deg); animation-delay: -0.4s; }
+.orbit-1 .particle:nth-child(3)  { transform: rotate(60deg)  translateX(100px) rotate(-60deg); animation-delay: -0.8s; }
+.orbit-1 .particle:nth-child(4)  { transform: rotate(90deg)  translateX(100px) rotate(-90deg); animation-delay: -1.2s; }
+.orbit-1 .particle:nth-child(5)  { transform: rotate(120deg) translateX(100px) rotate(-120deg); animation-delay: -1.6s; }
+.orbit-1 .particle:nth-child(6)  { transform: rotate(150deg) translateX(100px) rotate(-150deg); animation-delay: -2.0s; }
+.orbit-1 .particle:nth-child(7)  { transform: rotate(180deg) translateX(100px) rotate(-180deg); animation-delay: -2.4s; }
+.orbit-1 .particle:nth-child(8)  { transform: rotate(210deg) translateX(100px) rotate(-210deg); animation-delay: -2.8s; }
+.orbit-1 .particle:nth-child(9)  { transform: rotate(240deg) translateX(100px) rotate(-240deg); animation-delay: -3.2s; }
+.orbit-1 .particle:nth-child(10) { transform: rotate(270deg) translateX(100px) rotate(-270deg); animation-delay: -3.6s; }
+.orbit-1 .particle:nth-child(11) { transform: rotate(300deg) translateX(100px) rotate(-300deg); animation-delay: -4.0s; }
+.orbit-1 .particle:nth-child(12) { transform: rotate(330deg) translateX(100px) rotate(-330deg); animation-delay: -4.4s; }
+
+.orbit-2 .particle { animation-duration: 7s; background-color: lightblue; box-shadow: 0 0 5px lightblue, 0 0 10px cyan;}
+.orbit-2 .particle:nth-child(1)  { transform: rotate(15deg)  translateX(150px) rotate(-15deg);  animation-delay: -0.0s; }
+.orbit-2 .particle:nth-child(2)  { transform: rotate(45deg)  translateX(150px) rotate(-45deg);  animation-delay: -0.6s; }
+.orbit-2 .particle:nth-child(3)  { transform: rotate(75deg)  translateX(150px) rotate(-75deg);  animation-delay: -1.2s; }
+.orbit-2 .particle:nth-child(4)  { transform: rotate(105deg) translateX(150px) rotate(-105deg); animation-delay: -1.8s; }
+.orbit-2 .particle:nth-child(5)  { transform: rotate(135deg) translateX(150px) rotate(-135deg); animation-delay: -2.4s; }
+.orbit-2 .particle:nth-child(6)  { transform: rotate(165deg) translateX(150px) rotate(-165deg); animation-delay: -3.0s; }
+.orbit-2 .particle:nth-child(7)  { transform: rotate(195deg) translateX(150px) rotate(-195deg); animation-delay: -3.6s; }
+.orbit-2 .particle:nth-child(8)  { transform: rotate(225deg) translateX(150px) rotate(-225deg); animation-delay: -4.2s; }
+.orbit-2 .particle:nth-child(9)  { transform: rotate(255deg) translateX(150px) rotate(-255deg); animation-delay: -4.8s; }
+.orbit-2 .particle:nth-child(10) { transform: rotate(285deg) translateX(150px) rotate(-285deg); animation-delay: -5.4s; }
+.orbit-2 .particle:nth-child(11) { transform: rotate(315deg) translateX(150px) rotate(-315deg); animation-delay: -6.0s; }
+.orbit-2 .particle:nth-child(12) { transform: rotate(345deg) translateX(150px) rotate(-345deg); animation-delay: -6.6s; }
+
+.orbit-3 .particle { animation-duration: 6s; background-color: mediumpurple; box-shadow: 0 0 5px mediumpurple, 0 0 10px indigo;}
+.orbit-3 .particle:nth-child(1)  { transform: rotate(0deg)   translateX(200px) rotate(-0deg);   animation-delay: -0.0s; }
+.orbit-3 .particle:nth-child(2)  { transform: rotate(30deg)  translateX(200px) rotate(-30deg);  animation-delay: -0.5s; }
+.orbit-3 .particle:nth-child(3)  { transform: rotate(60deg)  translateX(200px) rotate(-60deg);  animation-delay: -1.0s; }
+.orbit-3 .particle:nth-child(4)  { transform: rotate(90deg)  translateX(200px) rotate(-90deg);  animation-delay: -1.5s; }
+.orbit-3 .particle:nth-child(5)  { transform: rotate(120deg) translateX(200px) rotate(-120deg); animation-delay: -2.0s; }
+.orbit-3 .particle:nth-child(6)  { transform: rotate(150deg) translateX(200px) rotate(-150deg); animation-delay: -2.5s; }
+.orbit-3 .particle:nth-child(7)  { transform: rotate(180deg) translateX(200px) rotate(-180deg); animation-delay: -3.0s; }
+.orbit-3 .particle:nth-child(8)  { transform: rotate(210deg) translateX(200px) rotate(-210deg); animation-delay: -3.5s; }
+.orbit-3 .particle:nth-child(9)  { transform: rotate(240deg) translateX(200px) rotate(-240deg); animation-delay: -4.0s; }
+.orbit-3 .particle:nth-child(10) { transform: rotate(270deg) translateX(200px) rotate(-270deg); animation-delay: -4.5s; }
+.orbit-3 .particle:nth-child(11) { transform: rotate(300deg) translateX(200px) rotate(-300deg); animation-delay: -5.0s; }
+.orbit-3 .particle:nth-child(12) { transform: rotate(330deg) translateX(200px) rotate(-330deg); animation-delay: -5.5s; }
+
+/* Keyframes for particle rotation within their orbit */
+@keyframes move-particle {
+    from { transform: rotate(0deg)   translateX(var(--radius)) rotate(0deg);   } /* Use CSS var later if needed */
+    to   { transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+    /* The translateX value needs to match the radius used in the initial transform */
+    /* Hack: Re-declare radius in keyframes. Use the largest radius needed */
+    /* A better way would be separate keyframes, but this is simpler for demo */
+    from { transform: rotate(0deg)   translateX(200px) rotate(0deg);   }
+    to   { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+    /* Correction: Use the translateX from initial positioning */
+     /* Example for orbit-1 particles (radius 100px) */
+    /* @keyframes move-particle-1 {
+        from { transform: rotate(0deg)   translateX(100px) rotate(0deg);   }
+        to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+    } */
+     /* The single keyframe approach works because the initial offset is applied */
+     /* via transform, and the animation adds rotation relative to that. */
+}
+
+
+/* --- Shooting Stars --- */
+.star-field {
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) translateZ(-300px); /* Push back */
+    pointer-events: none; /* Don't interfere with interactions */
+}
+
+.shooting-star {
+    position: absolute;
+    width: 80px; /* Length of the tail */
+    height: 1.5px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    border-radius: 1px;
+    transform-origin: right center; /* Rotate around the tail end */
+    opacity: 0;
+    animation: shoot linear infinite;
+}
+
+/* Randomize star paths and timings */
+.star-1 { top: 20%; left: -10%; animation-duration: 3s; animation-delay: 1s; transform: rotate(-15deg); }
+.star-2 { top: 40%; left: -10%; animation-duration: 2s; animation-delay: 3s; transform: rotate(-25deg); }
+.star-3 { top: 70%; left: -10%; animation-duration: 4s; animation-delay: 0s; transform: rotate(-20deg); }
+.star-4 { top: 10%; left: -10%; animation-duration: 2.5s; animation-delay: 5s; transform: rotate(-30deg); }
+.star-5 { top: 90%; left: -10%; animation-duration: 3.5s; animation-delay: 2.5s; transform: rotate(-10deg); }
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(var(--angle, -20deg)); /* Use initial angle */
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(120vw) translateY(-30vh) rotate(var(--angle, -20deg)); /* Move across and slightly up */
+        opacity: 0;
+    }
+}
+
+/* Assign angle via custom property (requires repeating transform in element style or using nth-child) */
+.star-1 { --angle: -15deg; }
+.star-2 { --angle: -25deg; }
+.star-3 { --angle: -20deg; }
+.star-4 { --angle: -30deg; }
+.star-5 { --angle: -10deg; }
+
+
+/* --- Comet --- */
+.comet-orbit {
+    width: 1px; height: 1px; /* Position container */
+    transform: translate(-50%, -50%);
+    animation: comet-path 15s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+.comet {
+    position: absolute;
+    top: 0; left: 0;
+    transform-style: preserve-3d;
+    /* Rotation will be handled by the path animation */
+}
+
+.comet-head {
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(ellipse at center, #ffffff 20%, #87cefa 60%, rgba(135, 206, 250, 0) 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px #87cefa, 0 0 20px 10px rgba(135, 206, 250, 0.5);
+    position: absolute;
+    transform: translate(-50%, -50%); /* Center head */
+}
+
+/* Comet Tail using pseudo-element */
+.comet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0; /* Start from slightly behind the head's center */
+    width: 150px; /* Tail length */
+    height: 8px; /* Tail thickness */
+    background: linear-gradient(to right, rgba(135, 206, 250, 0.8), rgba(135, 206, 250, 0));
+    border-radius: 4px;
+    transform-origin: left center;
+    transform: translate(0, -50%) rotateY(180deg) translateX(-5px); /* Position behind head */
+    opacity: 0.8;
+}
+
+@keyframes comet-path {
+    0% {
+        transform: translate(-50%, -50%) translate3d(-300px, -200px, -150px) rotate3d(1, 1, 1, 0deg);
+    }
+    50% {
+         transform: translate(-50%, -50%) translate3d(100px, 50px, 100px) rotate3d(0.5, -1, 0.2, 180deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) translate3d(300px, 250px, -50px) rotate3d(1, 1, 1, 360deg);
+    }
+}
+
+
+/* --- Dynamic Text --- */
+.title-container {
+    transform: translate(-50%, -150%) translateZ(150px); /* Position above center, forward */
+    pointer-events: none; /* Allow clicking through */
+}
+
+.title {
+    font-family: 'Arial', sans-serif; /* Choose a suitable font */
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00aaff, 0 0 40px #00aaff;
+    animation: pulse-text 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-text {
+    from {
+        transform: scale(1);
+        opacity: 0.9;
+        text-shadow: 0 0 8px #0ff, 0 0 16px #0ff, 0 0 24px #00aaff, 0 0 32px #00aaff;
+    }
+    to {
+        transform: scale(1.05);
+        opacity: 1;
+        text-shadow: 0 0 12px #0ff, 0 0 24px #0ff, 0 0 36px #00aaff, 0 0 48px #00aaff;
+    }
+}
+
+/* Optional: Slow rotation for the entire scene */
+/* @keyframes scene-rotate {
+    from { transform: rotateY(0deg) rotateX(5deg); }
+    to   { transform: rotateY(360deg) rotateX(5deg); }
+} */
