@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Subject Icons</title>
+    <style>
+        :root {
+            --night: #151616;
+            --white: #FEFEFE;
+            --celeste: #A0EBEB;
+            --night-2: #0F0F0F;
+            --white-2: #FFFFFF;
+        }
+
+        body {
+            background: var(--night);
+            color: var(--white);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: var(--celeste);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .icons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--night-2);
+            cursor: pointer;
+            animation: wrapper-pop 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes wrapper-pop {
+            0% { transform: none; box-shadow: none; }
+            100% { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(160, 235, 235, 0.2); }
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .icon-title {
+            color: var(--white);
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Mathematics Icon */
+        .math-icon {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .math-shape {
+            position: absolute;
+            background: linear-gradient(135deg, var(--celeste), transparent);
+            border-radius: 6px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .math-square {
+            width: 40px;
+            height: 40px;
+            transform: rotate(0deg);
+            animation: math-square-anim 1.4s ease-in-out infinite alternate;
+        }
+        @keyframes math-square-anim {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(45deg); }
+        }
+        .math-triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 45px solid var(--celeste);
+            background: transparent;
+            opacity: 0.7;
+            animation: math-triangle-anim 1.4s ease-in-out infinite alternate;
+        }
+        @keyframes math-triangle-anim {
+            0% { transform: translateY(0) scale(1); opacity: 0.7; }
+            100% { transform: translateY(-5px) scale(1.05); opacity: 0.9; }
+        }
+        .math-circle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--celeste), var(--white-2));
+            opacity: 0.7;
+            animation: math-circle-anim 1.4s ease-in-out infinite alternate;
+        }
+        @keyframes math-circle-anim {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 0.9; }
+        }
+
+        /* Literature Icon */
+        .literature-icon {
+            position: relative;
+            perspective: 800px;
+        }
+
+        .book {
+            width: 60px;
+            height: 70px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(15deg);
+            animation: book-anim 2.2s ease-in-out infinite alternate;
+        }
+        @keyframes book-anim {
+            0% { transform: rotateY(15deg) rotateX(0deg); }
+            100% { transform: rotateY(30deg) rotateX(5deg); }
+        }
+
+        .book-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--night-2), var(--white-2));
+            border-radius: 3px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-page {
+            position: absolute;
+            width: 90%;
+            height: 94%;
+            background: var(--white);
+            top: 3%;
+            left: 5%;
+            transform: translateZ(-2px);
+            border-radius: 1px;
+        }
+
+        .book-line {
+            position: absolute;
+            width: 70%;
+            height: 2px;
+            background: var(--night-2);
+            opacity: 0.2;
+        }
+
+        .book-line:nth-child(1) { top: 20%; }
+        .book-line:nth-child(2) { top: 40%; }
+        .book-line:nth-child(3) { top: 60%; }
+        .book-line:nth-child(4) { top: 80%; }
+
+        /* Science Icon */
+        .science-icon {
+            position: relative;
+        }
+
+        .atom {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nucleus {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, var(--celeste), var(--night-2));
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 10px var(--celeste);
+            z-index: 2;
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(160, 235, 235, 0.5);
+            border-radius: 50%;
+            animation-name: spin;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .orbit-1 {
+            width: 50px;
+            height: 70px;
+            animation-duration: 3s;
+        }
+
+        .orbit-2 {
+            width: 70px;
+            height: 50px;
+            transform: rotate(60deg);
+            animation-duration: 5s;
+        }
+
+        .orbit-3 {
+            width: 60px;
+            height: 60px;
+            transform: rotate(120deg);
+            animation-duration: 4s;
+        }
+
+        .electron {
+            width: 8px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 5px var(--white);
+        }
+
+        .electron-1 {
+            top: 0;
+            animation: orbit1 3s linear infinite;
+        }
+
+        .electron-2 {
+            top: 0;
+            animation: orbit2 5s linear infinite;
+        }
+
+        .electron-3 {
+            top: 0;
+            animation: orbit3 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes orbit1 {
+            0% { transform: rotate(0deg) translateX(25px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(25px) rotate(-360deg); }
+        }
+
+        @keyframes orbit2 {
+            0% { transform: rotate(0deg) translateX(35px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(35px) rotate(-360deg); }
+        }
+
+        @keyframes orbit3 {
+            0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+        }
+
+        /* History Icon */
+        .history-icon {
+            position: relative;
+        }
+
+        .scroll {
+            width: 60px;
+            height: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-body {
+            width: 50px;
+            height: 60px;
+            background: linear-gradient(to right, var(--white), var(--white-2));
+            border-radius: 5px;
+            position: absolute;
+            left: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            overflow: hidden;
+            animation: unroll 1.8s ease-in-out infinite alternate;
+        }
+
+        .scroll-rod-top {
+            width: 60px;
+            height: 10px;
+            background: linear-gradient(to right, var(--night-2), var(--celeste));
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+        }
+
+        .scroll-rod-bottom {
+            width: 60px;
+            height: 10px;
+            background: linear-gradient(to right, var(--night-2), var(--celeste));
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .scroll-text {
+            width: 80%;
+            height: 2px;
+            background: var(--night-2);
+            opacity: 0.3;
+        }
+
+        @keyframes unroll {
+            0% { height: 60px; }
+            50% { height: 90px; }
+            100% { height: 60px; }
+        }
+
+        /* Programming Icon */
+        .programming-icon {
+            position: relative;
+        }
+
+        .code-window {
+            width: 70px;
+            height: 60px;
+            background: var(--night-2);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(160, 235, 235, 0.3);
+        }
+
+        .window-bar {
+            height: 12px;
+            background: linear-gradient(to right, var(--night), var(--night-2));
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+        }
+
+        .window-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+
+        .window-dot-red { background: #ff5f56; }
+        .window-dot-yellow { background: #ffbd2e; }
+        .window-dot-green { background: #27c93f; }
+
+        .code-content {
+            padding: 5px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .code-line {
+            height: 2px;
+            background: var(--white);
+            opacity: 0.7;
+            margin: 2px 0;
+            position: relative;
+            animation: typing 1.5s infinite;
+        }
+
+        @keyframes typing {
+            0% { width: 20%; }
+            50% { width: 80%; }
+            100% { width: 20%; }
+        }
+
+        .code-cursor {
+            width: 5px;
+            height: 10px;
+            background: var(--celeste);
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Art Icon */
+        .art-icon {
+            position: relative;
+        }
+
+        .canvas {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(160, 235, 235, 0.3);
+        }
+
+        .paint-splash {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--celeste);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+            animation: splash-pop 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes splash-pop {
+            0% { transform: scale(0.7); }
+            100% { transform: scale(1); }
+        }
+        .splash-1 {
+            width: 20px;
+            height: 20px;
+            top: 10px;
+            left: 15px;
+            background: linear-gradient(to top right, var(--celeste), transparent);
+            transition-delay: 0.1s;
+        }
+
+        .splash-2 {
+            width: 15px;
+            height: 15px;
+            top: 30px;
+            left: 35px;
+            background: linear-gradient(to top right, var(--night-2), transparent);
+            transition-delay: 0.2s;
+        }
+
+        .splash-3 {
+            width: 25px;
+            height: 25px;
+            top: 35px;
+            left: 10px;
+            background: linear-gradient(to top right, var(--white-2), var(--celeste));
+            transition-delay: 0.3s;
+        }
+
+        .paintbrush {
+            position: absolute;
+            width: 5px;
+            height: 40px;
+            background: var(--night-2);
+            bottom: -20px;
+            right: 10px;
+            transform: rotate(-45deg);
+            transition: transform 0.5s ease;
+            animation: brush-move 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes brush-move {
+            0% { transform: rotate(-45deg) translateY(0); }
+            100% { transform: rotate(-30deg) translateY(-10px); }
+        }
+
+        .brush-tip {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            background: var(--celeste);
+            border-radius: 4px 4px 0 0;
+            top: -10px;
+            left: -1.5px;
+        }
+
+        /* Psychology Icon */
+        .psychology-icon {
+            position: relative;
+        }
+
+        .brain {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            background: linear-gradient(45deg, var(--night-2), transparent);
+            border-radius: 30px 30px 20px 20px;
+            overflow: hidden;
+        }
+
+        .brain-half {
+            position: absolute;
+            width: 28px;
+            height: 50px;
+            top: 5px;
+            border-radius: 20px 20px 5px 5px;
+            background: linear-gradient(to bottom, var(--night-2), transparent);
+        }
+
+        .brain-left {
+            left: 3px;
+        }
+
+        .brain-right {
+            right: 3px;
+        }
+
+        .brain-fold {
+            position: absolute;
+            width: 10px;
+            height: 3px;
+            background: var(--celeste);
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            animation: fold-pop 1.3s ease-in-out infinite alternate;
+        }
+        @keyframes fold-pop {
+            0% { opacity: 0; transform: scaleX(1); }
+            100% { opacity: 0.8; transform: scaleX(1.2); }
+        }
+
+        /* Create multiple folds */
+        .fold-1 { top: 12px; left: 8px; transition-delay: 0.1s; }
+        .fold-2 { top: 20px; left: 10px; transition-delay: 0.2s; }
+        .fold-3 { top: 28px; left: 5px; transition-delay: 0.3s; }
+        .fold-4 { top: 36px; left: 12px; transition-delay: 0.4s; }
+        .fold-5 { top: 12px; right: 8px; transition-delay: 0.1s; }
+        .fold-6 { top: 20px; right: 10px; transition-delay: 0.2s; }
+        .fold-7 { top: 28px; right: 5px; transition-delay: 0.3s; }
+        .fold-8 { top: 36px; right: 12px; transition-delay: 0.4s; }
+
+        /* Economics Icon */
+        .economics-icon {
+            position: relative;
+        }
+
+        .chart {
+            width: 60px;
+            height: 60px;
+            background: var(--night-2);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-line {
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            background: var(--white);
+            opacity: 0.5;
+            left: 10px;
+        }
+
+        .chart-bottom {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: var(--white);
+            opacity: 0.5;
+            bottom: 10px;
+        }
+
+        .chart-bar {
+            position: absolute;
+            width: 8px;
+            background: linear-gradient(to bottom left, var(--celeste), transparent);
+            bottom: 13px;
+            border-radius: 2px 2px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        .bar-1 { left: 18px; height: 15px; transition-delay: 0.1s; animation: bar1-grow 1.6s ease-in-out infinite alternate; }
+        .bar-2 { left: 30px; height: 25px; transition-delay: 0.2s; animation: bar2-grow 1.6s ease-in-out infinite alternate; }
+        .bar-3 { left: 42px; height: 20px; transition-delay: 0.3s; animation: bar3-grow 1.6s ease-in-out infinite alternate; }
+        @keyframes bar1-grow {
+            0% { height: 15px; }
+            100% { height: 25px; }
+        }
+        @keyframes bar2-grow {
+            0% { height: 25px; }
+            100% { height: 35px; }
+        }
+        @keyframes bar3-grow {
+            0% { height: 20px; }
+            100% { height: 40px; }
+        }
+        .coin {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #ffca28, #ffa000);
+            border-radius: 50%;
+            right: 10px;
+            top: 15px;
+            box-shadow: 0 0 5px rgba(255, 202, 40, 0.5);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            animation: coin-pop 1.6s ease-in-out infinite alternate;
+        }
+        @keyframes coin-pop {
+            0% { opacity: 0; transform: translateY(0); }
+            100% { opacity: 1; transform: translateY(10px); }
+        }
+
+        /* Biology Icon */
+        .biology-icon {
+            position: relative;
+            perspective: 800px;
+        }
+
+        .dna {
+            width: 30px;
+            height: 70px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 3s linear infinite;
+        }
+
+        .helix {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .strand {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--celeste);
+            transform-origin: center;
+        }
+
+        .strand:nth-child(odd) {
+            background: var(--white);
+        }
+
+        .base {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--night-2);
+            right: -4px;
+        }
+
+        /* Create DNA strands */
+        .strand:nth-child(1) { top: 5px; transform: rotateX(0deg); }
+        .strand:nth-child(2) { top: 10px; transform: rotateX(30deg); }
+        .strand:nth-child(3) { top: 15px; transform: rotateX(60deg); }
+        .strand:nth-child(4) { top: 20px; transform: rotateX(90deg); }
+        .strand:nth-child(5) { top: 25px; transform: rotateX(120deg); }
+        .strand:nth-child(6) { top: 30px; transform: rotateX(150deg); }
+        .strand:nth-child(7) { top: 35px; transform: rotateX(180deg); }
+        .strand:nth-child(8) { top: 40px; transform: rotateX(210deg); }
+        .strand:nth-child(9) { top: 45px; transform: rotateX(240deg); }
+        .strand:nth-child(10) { top: 50px; transform: rotateX(270deg); }
+        .strand:nth-child(11) { top: 55px; transform: rotateX(300deg); }
+        .strand:nth-child(12) { top: 60px; transform: rotateX(330deg); }
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* Philosophy Icon */
+        .philosophy-icon {
+            position: relative;
+        }
+
+        .thought-circle {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, var(--night-2), transparent);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: thought-rotate 2s ease-in-out infinite alternate;
+        }
+        @keyframes thought-rotate {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(10deg); }
+        }
+
+        .question-mark {
+            font-size: 40px;
+            color: var(--celeste);
+            font-weight: bold;
+            opacity: 0.9;
+            animation: qmark-pop 2s ease-in-out infinite alternate;
+        }
+        @keyframes qmark-pop {
+            0% { transform: scale(1); text-shadow: none; }
+            100% { transform: scale(1.1); text-shadow: 0 0 10px var(--celeste); }
+        }
+
+        .thought-bubble {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border-radius: 50%;
+            opacity: 0;
+            animation: bubble-pop 2s ease-in-out infinite alternate;
+        }
+        @keyframes bubble-pop {
+            0% { opacity: 0; transform: translateY(0); }
+            100% { opacity: 0.7; transform: translateY(-5px); }
+        }
+
+        .bubble-1 { top: 5px; left: 15px; transition-delay: 0.1s; }
+        .bubble-2 { top: 15px; right: 10px; transition-delay: 0.2s; }
+        .bubble-3 { bottom: 10px; right: 20px; transition-delay: 0.3s; }
+        .bubble-4 { bottom: 15px; left: 15px; transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <h1>Academic Subject Icons</h1>
+    <div class="icons-container">
+        <!-- Mathematics Icon -->
+        <div class="icon-wrapper">
+            <div class="icon math-icon">
+                <div class="math-shape math-square"></div>
+                <div class="math-shape math-triangle"></div>
+                <div class="math-shape math-circle"></div>
+            </div>
+            <div class="icon-title">Mathematics</div>
+        </div>
+
+        <!-- Literature Icon -->
+        <div class="icon-wrapper">
+            <div class="icon literature-icon">
+                <div class="book">
+                    <div class="book-cover"></div>
+                    <div class="book-page">
+                        <div class="book-line"></div>
+                        <div class="book-line"></div>
+                        <div class="book-line"></div>
+                        <div class="book-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-title">Literature</div>
+        </div>
+
+        <!-- Science Icon -->
+        <div class="icon-wrapper">
+            <div class="icon science-icon">
+                <div class="atom">
+                    <div class="nucleus"></div>
+                    <div class="orbit orbit-1">
+                        <div class="electron electron-1"></div>
+                    </div>
+                    <div class="orbit orbit-2">
+                        <div class="electron electron-2"></div>
+                    </div>
+                    <div class="orbit orbit-3">
+                        <div class="electron electron-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-title">Science</div>
+        </div>
+
+        <!-- History Icon -->
+        <div class="icon-wrapper">
+            <div class="icon history-icon">
+                <div class="scroll">
+                    <div class="scroll-rod-top"></div>
+                    <div class="scroll-body">
+                        <div class="scroll-text"></div>
+                        <div class="scroll-text"></div>
+                        <div class="scroll-text"></div>
+                        <div class="scroll-text"></div>
+                        <div class="scroll-text"></div>
+                    </div>
+                    <div class="scroll-rod-bottom"></div>
+                </div>
+            </div>
+            <div class="icon-title">History</div>
+        </div>
+
+        <!-- Programming Icon -->
+        <div class="icon-wrapper">
+            <div class="icon programming-icon">
+                <div class="code-window">
+                    <div class="window-bar">
+                        <div class="window-dot window-dot-red"></div>
+                        <div class="window-dot window-dot-yellow"></div>
+                        <div class="window-dot window-dot-green"></div>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line"></div>
+                        <div class="code-line"></div>
+                        <div class="code-line"></div>
+                        <div class="code-line"></div>
+                        <div class="code-cursor"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-title">Programming</div>
+        </div>
+
+        <!-- Art Icon -->
+        <div class="icon-wrapper">
+            <div class="icon art-icon">
+                <div class="canvas">
+                    <div class="paint-splash splash-1"></div>
+                    <div class="paint-splash splash-2"></div>
+                    <div class="paint-splash splash-3"></div>
+                    <div class="paintbrush">
+                        <div class="brush-tip"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-title">Art</div>
+        </div>
+
+        <!-- Psychology Icon -->
+        <div class="icon-wrapper">
+            <div class="icon psychology-icon">
+                <div class="brain">
+                    <div class="brain-half brain-left"></div>
+                    <div class="brain-half brain-right"></div>
+                    <div class="brain-fold fold-1"></div>
+                    <div class="brain-fold fold-2"></div>
+                    <div class="brain-fold fold-3"></div>
+                    <div class="brain-fold fold-4"></div>
+                    <div class="brain-fold fold-5"></div>
+                    <div class="brain-fold fold-6"></div>
+                    <div class="brain-fold fold-7"></div>
+                    <div class="brain-fold fold-8"></div>
+                </div>
+            </div>
+            <div class="icon-title">Psychology</div>
+        </div>
+
+        <!-- Economics Icon -->
+        <div class="icon-wrapper">
+            <div class="icon economics-icon">
+                <div class="chart">
+                    <div class="chart-line"></div>
+                    <div class="chart-bottom"></div>
+                    <div class="chart-bar bar-1"></div>
+                    <div class="chart-bar bar-2"></div>
+                    <div class="chart-bar bar-3"></div>
+                    <div class="coin"></div>
+                </div>
+            </div>
+            <div class="icon-title">Economics</div>
+        </div>
+
+        <!-- Biology Icon -->
+        <div class="icon-wrapper">
+            <div class="icon biology-icon">
+                <div class="dna">
+                    <div class="helix">
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                        <div class="strand"><div class="base"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-title">Biology</div>
+        </div>
+
+        <!-- Philosophy Icon -->
+        <div class="icon-wrapper">
+            <div class="icon philosophy-icon">
+                <div class="thought-circle">
+                    <div class="question-mark">?</div>
+                    <div class="thought-bubble bubble-1"></div>
+                    <div class="thought-bubble bubble-2"></div>
+                    <div class="thought-bubble bubble-3"></div>
+                    <div class="thought-bubble bubble-4"></div>
+                </div>
+            </div>
+            <div class="icon-title">Philosophy</div>
+        </div>
+    </div>
+</body>
+</html>

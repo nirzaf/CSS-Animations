@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unique Animated CSS Icons</title>
+  <style>
+    /* Color Palette */
+    :root {
+      --celeste: #A0EBEB; /* Accent color */
+      --math-base: #1A237E; /* Indigo Dye */
+      --lit-base: #4E342E; /* Dark Brown */
+      --sci-base: #1B5E20; /* Dark Green */
+      --hist-base: #37474F; /* Payne's Gray */
+      --prog-base: #263238; /* Charcoal */
+      --art-base: #4A148C; /* Dark Purple */
+      --psy-base: #6A1B9A; /* Grape */
+      --econ-base: #2E7D32; /* Forest Green */
+      --bio-base: #33691E; /* Avocado */
+      --phil-base: #E65100; /* Dark Orange */
+      --bg: #FFFFFF; /* Light background */
+    }
+
+    /* Body Styling */
+    body {
+      background: var(--bg);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    /* Icon Container */
+    .icon {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* SVG Base Styling */
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    /* Hover Effect */
+    .icon:hover svg {
+      transform: scale(1.1);
+      transition: transform 0.3s;
+    }
+
+    .icon:hover path, .icon:hover circle, .icon:hover text {
+      stroke: var(--celeste);
+    }
+
+    /* 1. Mathematics */
+    #math-icon path { stroke: var(--math-base); stroke-width: 2; fill: none; }
+    #math-icon text { fill: var(--celeste); font-size: 10px; }
+
+    /* 2. Literature */
+    #lit-icon path { stroke: var(--lit-base); stroke-width: 2; fill: none; }
+    #lit-icon text { fill: var(--celeste); font-size: 8px; }
+
+    /* 3. Science */
+    #sci-icon path { stroke: var(--sci-base); stroke-width: 2; fill: none; }
+    #sci-icon circle { fill: var(--celeste); }
+
+    /* 4. History */
+    #hist-icon path { stroke: var(--hist-base); stroke-width: 2; fill: none; }
+
+    /* 5. Programming */
+    #prog-icon path { stroke: var(--prog-base); stroke-width: 2; fill: none; }
+    #prog-icon text { fill: var(--celeste); font-size: 8px; }
+
+    /* 6. Art */
+    #art-icon path { stroke: var(--art-base); stroke-width: 2; fill: none; }
+    #art-icon rect { fill: var(--celeste); }
+
+    /* 7. Psychology */
+    #psy-icon path { stroke: var(--psy-base); stroke-width: 2; fill: none; }
+
+    /* 8. Economics */
+    #econ-icon path { stroke: var(--econ-base); stroke-width: 2; fill: none; }
+
+    /* 9. Biology */
+    #bio-icon path { stroke: var(--bio-base); stroke-width: 2; fill: none; }
+
+    /* 10. Philosophy */
+    #phil-icon path { stroke: var(--phil-base); stroke-width: 2; fill: none; }
+  </style>
+</head>
+<body>
+  <!-- 1. Mathematics -->
+  <div class="icon" id="math-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path id="infinity" d="M30 50 A20 20 0 0 1 50 30 A20 20 0 0 1 70 50 A20 20 0 0 1 50 70 A20 20 0 0 1 30 50" stroke-dasharray="1000" stroke-dashoffset="1000">
+        <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite" />
+      </path>
+      <text>
+        π
+        <animateMotion dur="5s" repeatCount="indefinite">
+          <mpath xlink:href="#infinity" />
+        </animateMotion>
+      </text>
+      <text>
+        Σ
+        <animateMotion dur="5s" repeatCount="indefinite" begin="1s">
+          <mpath xlink:href="#infinity" />
+        </animateMotion>
+      </text>
+    </svg>
+  </div>
+
+  <!-- 2. Literature -->
+  <div class="icon" id="lit-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 80 Q30 70, 40 80 T60 80" stroke-dasharray="100" stroke-dashoffset="100">
+        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
+      </path>
+      <text x="25" y="85">To be or not to be</text>
+    </svg>
+  </div>
+
+  <!-- 3. Science -->
+  <div class="icon" id="sci-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 20 V80 H60 V20" />
+      <circle cx="50" cy="70" r="5">
+        <animate attributeName="cy" from="70" to="30" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="50" cy="60" r="4">
+        <animate attributeName="cy" from="60" to="20" dur="2s" repeatCount="indefinite" begin="0.5s" />
+        <animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite" begin="0.5s" />
+      </circle>
+    </svg>
+  </div>
+
+  <!-- 4. History -->
+  <div class="icon" id="hist-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 20 H60 V80 H40 Z" />
+      <path d="M45 30 H55" stroke="var(--celeste)">
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+      </path>
+      <path d="M45 40 H55" stroke="var(--celeste)">
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1s" />
+      </path>
+    </svg>
+  </div>
+
+  <!-- 5. Programming -->
+  <div class="icon" id="prog-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 30 V70 M70 30 V70" />
+      <text x="35" y="40">010101</text>
+      <animate attributeName="y" from="40" to="60" dur="2s" repeatCount="indefinite" />
+    </svg>
+  </div>
+
+  <!-- 6. Art -->
+  <div class="icon" id="art-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 80 L50 20 L80 80" />
+      <rect x="45" y="25" width="10" height="10" fill="var(--celeste)">
+        <animate attributeName="fill" values="#A0EBEB;#FF69B4;#A0EBEB" dur="3s" repeatCount="indefinite" />
+      </rect>
+    </svg>
+  </div>
+
+  <!-- 7. Psychology -->
+  <div class="icon" id="psy-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 50 L60 60 M50 50 L40 40" stroke="var(--celeste)">
+        <animate attributeName="stroke-width" from="2" to="4" dur="1s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+
+  <!-- 8. Economics -->
+  <div class="icon" id="econ-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 80 L40 60 L60 70 L80 50" stroke="var(--celeste)" stroke-dasharray="100" stroke-dashoffset="100">
+        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+
+  <!-- 9. Biology -->
+  <div class="icon" id="bio-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 70 C40 80, 60 80, 70 70" stroke="var(--celeste)">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+
+  <!-- 10. Philosophy -->
+  <div class="icon" id="phil-icon">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 50 C50 30, 70 30, 70 20" stroke="var(--phil-base)" />
+      <circle cx="70" cy="20" r="5" fill="var(--celeste)">
+        <animate attributeName="r" from="5" to="8" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  </div>
+</body>
+</html>

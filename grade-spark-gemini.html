@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Educational Icons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Define CSS Variables for the color palette */
+        :root {
+            --night: #151616;
+            --night-2: #0F0F0F;
+            --light: #FEFEFE;
+            --white: #FFFFFF;
+            --celeste: #A0EBEB;
+            --icon-size: 64px; /* Base size for icons */
+        }
+
+        body {
+            background-color: var(--night-2);
+            font-family: 'Inter', sans-serif;
+            color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+            gap: 2rem;
+            max-width: 800px; /* Limit grid width */
+            width: 100%;
+        }
+
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: var(--night);
+            padding: 1.5rem;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .icon-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(var(--celeste-rgb), 0.1); /* Subtle glow on hover */
+        }
+
+        .icon-wrapper {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-label {
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        /* General SVG Icon Styling */
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible; /* Allow animations to go slightly outside the box if needed */
+        }
+
+        /* --- Icon Specific Styles & Animations --- */
+
+        /* 1. Research & Sources */
+        .icon-research svg .magnifying-glass {
+            stroke: var(--light);
+            stroke-width: 2;
+            fill: none;
+            transform-origin: center;
+            animation: research-glow 3s infinite ease-in-out;
+        }
+        .icon-research svg .documents {
+            fill: var(--light);
+            opacity: 0.8;
+            animation: research-float 4s infinite ease-in-out;
+        }
+        .icon-research svg .doc-1 { animation-delay: 0s; }
+        .icon-research svg .doc-2 { animation-delay: -0.5s; }
+
+        @keyframes research-glow {
+            0%, 100% { filter: drop-shadow(0 0 1px var(--celeste)); }
+            50% { filter: drop-shadow(0 0 4px var(--celeste)); }
+        }
+        @keyframes research-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* 2. Essay Writing */
+        .icon-writing svg .pencil {
+            fill: var(--light);
+            transform-origin: bottom right;
+            animation: writing-scribble 1.5s infinite ease-in-out;
+        }
+        .icon-writing svg .paper-line {
+            stroke: var(--celeste);
+            stroke-width: 1.5;
+            stroke-dasharray: 10 5; /* Dashed line */
+            stroke-dashoffset: 0;
+            animation: writing-line 1.5s infinite linear;
+            opacity: 0; /* Start invisible */
+        }
+
+        @keyframes writing-scribble {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-2px); }
+        }
+        @keyframes writing-line {
+            from { stroke-dashoffset: 20; opacity: 1; }
+            to { stroke-dashoffset: 0; opacity: 0; }
+        }
+
+        /* 3. Math Solver */
+        .icon-math svg .calculator {
+            fill: var(--light);
+            filter: drop-shadow(0 0 2px var(--celeste));
+            animation: math-glow 2.5s infinite ease-in-out;
+        }
+        .icon-math svg .symbols {
+            fill: var(--celeste);
+            font-size: 18px; /* Adjust as needed */
+            font-family: serif; /* Use a font likely to have these symbols */
+            font-weight: bold;
+            transform-origin: center;
+            animation: math-rotate 8s infinite linear;
+        }
+         .icon-math svg .symbol-1 { animation-delay: 0s; }
+         .icon-math svg .symbol-2 { animation-delay: -2.67s; } /* 8s / 3 */
+         .icon-math svg .symbol-3 { animation-delay: -5.33s; } /* 8s / 3 * 2 */
+
+
+        @keyframes math-glow {
+             0%, 100% { filter: drop-shadow(0 0 2px var(--celeste)); }
+             50% { filter: drop-shadow(0 0 5px var(--celeste)); }
+        }
+        @keyframes math-rotate {
+            from { transform: rotate(0deg) translateX(25px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(25px) rotate(-360deg); }
+        }
+
+
+        /* 4. Presentation Design */
+        .icon-presentation svg .screen {
+            fill: var(--night);
+            stroke: var(--light);
+            stroke-width: 1.5;
+        }
+        .icon-presentation svg .slide {
+            fill: var(--celeste);
+            transform-origin: center;
+            animation: presentation-reveal 3s infinite ease-out;
+        }
+
+        @keyframes presentation-reveal {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+
+        /* 5. Citation Generator */
+        .icon-citation svg .book {
+            fill: var(--light);
+        }
+        .icon-citation svg .quote-mark {
+            fill: var(--celeste);
+            animation: citation-twinkle 2s infinite;
+        }
+        .icon-citation svg .sparkle {
+             fill: var(--celeste);
+             animation: citation-sparkle 2s infinite ease-out;
+             opacity: 0;
+        }
+        .icon-citation svg .sparkle-1 { animation-delay: 0s; }
+        .icon-citation svg .sparkle-2 { animation-delay: -0.5s; }
+        .icon-citation svg .sparkle-3 { animation-delay: -1s; }
+
+
+        @keyframes citation-twinkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        @keyframes citation-sparkle {
+             0% { transform: scale(0.5); opacity: 0; }
+             50% { transform: scale(1); opacity: 1; }
+             100% { transform: scale(0.5); opacity: 0; }
+        }
+
+        /* 6. Code Assistance */
+        .icon-code svg .brackets {
+            stroke: var(--light);
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+        }
+        .icon-code svg .code-line {
+            stroke: var(--celeste);
+            stroke-width: 2;
+            stroke-dasharray: 5 5;
+            stroke-dashoffset: 10;
+            animation: code-blink 1.5s infinite linear;
+        }
+
+        @keyframes code-blink {
+            from { stroke-dashoffset: 10; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* 7. Plagiarism Checker */
+        .icon-plagiarism svg .shield {
+            fill: var(--light);
+            opacity: 0.9;
+        }
+        .icon-plagiarism svg .checkmark {
+            stroke: var(--night); /* Dark checkmark on light shield */
+            stroke-width: 3;
+            fill: none;
+            transform-origin: center;
+            animation: plagiarism-pulse 2s infinite ease-in-out;
+        }
+         .icon-plagiarism svg .scan-line {
+             stroke: var(--celeste);
+             stroke-width: 1.5;
+             transform-origin: center;
+             animation: plagiarism-scan 3s infinite linear;
+             opacity: 0.7;
+         }
+
+        @keyframes plagiarism-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+         @keyframes plagiarism-scan {
+             0% { transform: translateY(-15px) scaleY(0.5); opacity: 0; }
+             50% { transform: translateY(0px) scaleY(1); opacity: 0.7; }
+             100% { transform: translateY(15px) scaleY(0.5); opacity: 0; }
+         }
+
+
+        /* 8. Subject Tutor Help */
+        .icon-tutor svg .hat {
+            fill: var(--light);
+            transform-origin: bottom center;
+            animation: tutor-bounce 2.5s infinite ease-in-out;
+        }
+        .icon-tutor svg .bubble {
+            fill: var(--celeste);
+            transform-origin: bottom left;
+             animation: tutor-bubble-pop 2.5s infinite ease-in-out;
+             opacity: 0; /* Start hidden */
+        }
+
+        @keyframes tutor-bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(5deg); }
+        }
+         @keyframes tutor-bubble-pop {
+             0%, 40%, 100% { transform: scale(0); opacity: 0; }
+             60% { transform: scale(1.1); opacity: 1; }
+             80% { transform: scale(0.9); opacity: 1; }
+             90% { transform: scale(1); opacity: 1; }
+         }
+
+        /* 9. Deadline Tracker */
+        .icon-deadline svg .calendar-body {
+            fill: var(--light);
+        }
+        .icon-deadline svg .calendar-rings {
+            fill: var(--night);
+        }
+        .icon-deadline svg .deadline-day {
+            fill: var(--celeste);
+            animation: deadline-glow 1.5s infinite ease-in-out;
+        }
+        .icon-deadline svg .clock-hand {
+             stroke: var(--night);
+             stroke-width: 2;
+             stroke-linecap: round;
+             transform-origin: center;
+             animation: deadline-tick 4s infinite linear; /* Slow tick */
+        }
+
+        @keyframes deadline-glow {
+            0%, 100% { filter: drop-shadow(0 0 1px var(--celeste)); }
+            50% { filter: drop-shadow(0 0 4px var(--celeste)); }
+        }
+         @keyframes deadline-tick {
+             from { transform: rotate(0deg); }
+             to { transform: rotate(360deg); }
+         }
+
+        /* 10. Idea Brainstorm */
+        .icon-brainstorm svg .lightbulb {
+            fill: var(--light);
+        }
+        .icon-brainstorm svg .filament {
+             stroke: var(--celeste);
+             stroke-width: 1.5;
+             animation: brainstorm-glow 2s infinite ease-in-out;
+        }
+        .icon-brainstorm svg .spark {
+            fill: var(--celeste);
+            transform-origin: center;
+            animation: brainstorm-orbit 4s infinite linear;
+            opacity: 0;
+        }
+        .icon-brainstorm svg .spark-1 { animation-delay: 0s; }
+        .icon-brainstorm svg .spark-2 { animation-delay: -1s; }
+        .icon-brainstorm svg .spark-3 { animation-delay: -2s; }
+        .icon-brainstorm svg .spark-4 { animation-delay: -3s; }
+
+        /* Hover effect for lightbulb */
+        .icon-container:hover .icon-brainstorm svg .filament {
+            stroke-width: 2.5; /* Make filament thicker on hover */
+            filter: drop-shadow(0 0 5px var(--celeste));
+        }
+
+
+        @keyframes brainstorm-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; filter: drop-shadow(0 0 3px var(--celeste)); }
+        }
+        @keyframes brainstorm-orbit {
+             0% { transform: rotate(0deg) translateX(25px) scale(0.5); opacity: 0; }
+             25% { opacity: 1; }
+             50% { transform: rotate(180deg) translateX(25px) scale(1); opacity: 1; }
+             75% { opacity: 1; }
+             100% { transform: rotate(360deg) translateX(25px) scale(0.5); opacity: 0; }
+        }
+
+        /* Utility to set Celeste RGB for hover shadow */
+        :root {
+            --celeste-rgb: 160, 235, 235;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="icon-grid">
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-research">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="documents doc-1" x="28" y="35" width="22" height="18" rx="2"/>
+                    <rect class="documents doc-2" x="32" y="39" width="22" height="18" rx="2" transform="rotate(5 43 48)"/>
+                    <circle class="magnifying-glass" cx="24" cy="24" r="12"/>
+                    <line class="magnifying-glass" x1="33" y1="33" x2="42" y2="42"/>
+                </svg>
+            </div>
+            <span class="icon-label">Research</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-writing">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="44" height="44" rx="3" fill="none" stroke="var(--light)" stroke-width="1.5"/>
+                    <line class="paper-line" x1="18" y1="25" x2="46" y2="25"/>
+                    <polygon class="pencil" points="48,35 54,41 40,55 34,49" />
+                    <polygon class="pencil" points="34,49 32,51 38,57 40,55" fill="var(--celeste)"/> </svg>
+            </div>
+            <span class="icon-label">Writing</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-math">
+                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="calculator" x="18" y="18" width="28" height="28" rx="4"/>
+                    <text class="symbols symbol-1" x="32" y="32" text-anchor="middle" dominant-baseline="middle">Σ</text>
+                    <text class="symbols symbol-2" x="32" y="32" text-anchor="middle" dominant-baseline="middle">√</text>
+                    <text class="symbols symbol-3" x="32" y="32" text-anchor="middle" dominant-baseline="middle">π</text>
+                 </svg>
+            </div>
+            <span class="icon-label">Math Solver</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-presentation">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="screen" x="8" y="12" width="48" height="32" rx="3"/>
+                    <line stroke="var(--light)" stroke-width="2" x1="32" y1="44" x2="32" y2="52"/>
+                    <line stroke="var(--light)" stroke-width="2" x1="24" y1="52" x2="40" y2="52"/>
+                    <rect class="slide" x="16" y="20" width="32" height="18" rx="1"/>
+                </svg>
+            </div>
+            <span class="icon-label">Presentation</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-citation">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                     <path class="book" d="M18 14 H46 V50 H18 V14 Z M22 18 V46 M18 16 H46"/>
+                     <path class="quote-mark" d="M30 25 C 30 21, 34 19, 38 19 M30 35 C 30 31, 34 29, 38 29"/>
+                     <circle class="sparkle sparkle-1" cx="42" cy="22" r="2"/>
+                     <circle class="sparkle sparkle-2" cx="45" cy="35" r="1.5"/>
+                     <circle class="sparkle sparkle-3" cx="39" cy="42" r="2"/>
+                </svg>
+            </div>
+            <span class="icon-label">Citation</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-code">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <polyline class="brackets" points="20,18 12,32 20,46"/>
+                    <polyline class="brackets" points="44,18 52,32 44,46"/>
+                     <line class="code-line" x1="25" y1="32" x2="39" y2="32"/>
+                </svg>
+            </div>
+            <span class="icon-label">Code Help</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-plagiarism">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <path class="shield" d="M32 10 L50 18 V36 C50 48 32 54 32 54 C32 54 14 48 14 36 V18 Z"/>
+                     <line class="scan-line" x1="18" y1="32" x2="46" y2="32"/>
+                    <polyline class="checkmark" points="24,32 30,38 40,28"/>
+                </svg>
+            </div>
+            <span class="icon-label">Plagiarism Check</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-tutor">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                     <path class="bubble" d="M48 38 C 48 44.6, 42.6 50, 36 50 L 28 50 L 24 54 V 50 C 17.4 50, 12 44.6, 12 38 S 17.4 26, 24 26 H 42 C 45.3 26, 48 28.7, 48 32 Z"/>
+                    <polygon class="hat" points="10,30 54,30 32,10" /> <rect class="hat" x="8" y="30" width="48" height="6" rx="2"/> </svg>
+            </div>
+            <span class="icon-label">Tutor Help</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-deadline">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="calendar-body" x="12" y="12" width="40" height="40" rx="4"/>
+                    <circle class="calendar-rings" cx="24" cy="16" r="2"/>
+                    <circle class="calendar-rings" cx="40" cy="16" r="2"/>
+                    <rect class="deadline-day" x="34" y="34" width="10" height="10" rx="1"/>
+                    <line class="clock-hand" x1="32" y1="32" x2="32" y2="22"/>
+                </svg>
+            </div>
+            <span class="icon-label">Deadlines</span>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon-wrapper icon-brainstorm">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <path class="lightbulb" d="M32 10 C 22 10, 18 20, 18 28 C 18 38, 24 46, 32 46 C 40 46, 46 38, 46 28 C 46 20, 42 10, 32 10 Z"/>
+                    <rect class="lightbulb" x="26" y="44" width="12" height="8" rx="1"/>
+                    <path class="filament" d="M28 38 C 30 32, 34 32, 36 38" fill="none"/>
+                    <circle class="spark spark-1" cx="32" cy="32" r="3"/>
+                    <circle class="spark spark-2" cx="32" cy="32" r="2"/>
+                    <circle class="spark spark-3" cx="32" cy="32" r="3"/>
+                    <circle class="spark spark-4" cx="32" cy="32" r="2.5"/>
+                </svg>
+            </div>
+            <span class="icon-label">Brainstorm</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
