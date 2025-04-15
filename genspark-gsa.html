@@ -1,0 +1,1490 @@
+Copy
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Spark Academy - Animated Icons</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <style>
+        :root {
+            --primary-color: #A0EBEB;
+            --black-color: #000000;
+            --white-color: #FFFFFF;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .icon-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .icon-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-title {
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--black-color);
+        }
+
+        /* Essay Paper Animation */
+        .essay-icon {
+            position: relative;
+            width: 60px;
+            height: 80px;
+            background-color: white;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+
+        .essay-icon::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            animation: writeText 2s infinite;
+        }
+
+        .essay-icon::after {
+            content: "";
+            position: absolute;
+            top: 25px;
+            left: 10px;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            animation: writeText 2s infinite 0.5s;
+        }
+
+        @keyframes writeText {
+            0% { width: 0; }
+            50% { width: 40px; }
+            100% { width: 0; }
+        }
+
+        /* Graduation Cap Animation */
+        .graduation-icon {
+            position: relative;
+            width: 70px;
+            height: 40px;
+            margin: 0 auto;
+        }
+
+        .graduation-cap {
+            width: 70px;
+            height: 20px;
+            background-color: var(--black-color);
+            position: relative;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .graduation-cap::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: var(--black-color);
+            position: absolute;
+            top: -20px;
+            left: 25px;
+            transform: rotate(45deg);
+        }
+
+        .graduation-cap::after {
+            content: "";
+            width: 10px;
+            height: 15px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 0;
+            left: 30px;
+            animation: tassel 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes tassel {
+            0% { transform: rotate(0); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(0); }
+        }
+
+        /* Lightbulb Animation */
+        .lightbulb-icon {
+            position: relative;
+            width: 60px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .bulb {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            animation: glow 2s infinite;
+        }
+
+        .bulb::after {
+            content: "";
+            width: 15px;
+            height: 20px;
+            background-color: var(--black-color);
+            position: absolute;
+            bottom: -20px;
+            left: 12.5px;
+            border-radius: 5px;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--primary-color); }
+            50% { box-shadow: 0 0 20px var(--primary-color); }
+            100% { box-shadow: 0 0 5px var(--primary-color); }
+        }
+
+        /* Clock Animation */
+        .clock-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .clock-face {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--black-color);
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .hour-hand {
+            width: 2px;
+            height: 15px;
+            background-color: var(--black-color);
+            position: absolute;
+            top: 15px;
+            left: 29px;
+            transform-origin: bottom;
+            animation: rotateHour 6s linear infinite;
+        }
+
+        .minute-hand {
+            width: 2px;
+            height: 22px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 8px;
+            left: 29px;
+            transform-origin: bottom;
+            animation: rotateMinute 60s linear infinite;
+        }
+
+        @keyframes rotateHour {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateMinute {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Shield Animation */
+        .shield-icon {
+            position: relative;
+            width: 60px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .shield {
+            width: 50px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 25px 25px 0 0;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .shield::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            top: 0;
+            left: -100%;
+            animation: shieldScan 3s infinite;
+        }
+
+        @keyframes shieldScan {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+
+        /* Checkmark Animation */
+        .checkmark-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .check-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--black-color);
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 25px;
+            left: 15px;
+            width: 30px;
+            height: 15px;
+            border-left: 3px solid var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            transform: rotate(-45deg) scale(0);
+            animation: check 2s infinite;
+        }
+
+        @keyframes check {
+            0% { transform: rotate(-45deg) scale(0); }
+            50% { transform: rotate(-45deg) scale(1); }
+            100% { transform: rotate(-45deg) scale(0); }
+        }
+
+        /* Revision Cycle Animation */
+        .revision-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .cycle-arrow {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--black-color);
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .arrow-head {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-top: 3px solid var(--primary-color);
+            border-right: 3px solid var(--primary-color);
+            top: 20px;
+            left: 20px;
+            transform: rotate(45deg);
+            animation: rotateArrow 3s linear infinite;
+        }
+
+        @keyframes rotateArrow {
+            0% { transform: rotate(45deg) translate(0, 0); }
+            25% { transform: rotate(135deg) translate(5px, 5px); }
+            50% { transform: rotate(225deg) translate(0, 0); }
+            75% { transform: rotate(315deg) translate(-5px, -5px); }
+            100% { transform: rotate(405deg) translate(0, 0); }
+        }
+
+        /* Book Animation */
+        .book-icon {
+            position: relative;
+            width: 70px;
+            height: 60px;
+            margin: 0 auto;
+            perspective: 500px;
+        }
+
+        .book-cover {
+            width: 50px;
+            height: 60px;
+            background-color: var(--black-color);
+            position: absolute;
+            left: 10px;
+            transform-origin: left;
+            animation: openBook 4s infinite;
+        }
+
+        .book-page {
+            width: 48px;
+            height: 58px;
+            background-color: white;
+            position: absolute;
+            left: 11px;
+            top: 1px;
+            border-right: 1px solid #ddd;
+        }
+
+        @keyframes openBook {
+            0% { transform: rotateY(0); }
+            50% { transform: rotateY(-120deg); }
+            100% { transform: rotateY(0); }
+        }
+
+        /* Magnifying Glass Animation */
+        .magnify-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .magnify-glass {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 3px solid var(--black-color);
+            position: relative;
+            margin: 10px auto;
+            animation: searchMove 3s infinite;
+        }
+
+        .magnify-handle {
+            width: 3px;
+            height: 20px;
+            background-color: var(--black-color);
+            position: absolute;
+            bottom: -15px;
+            right: -3px;
+            transform: rotate(-45deg);
+        }
+
+        @keyframes searchMove {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-10px, -5px); }
+            50% { transform: translate(10px, 5px); }
+            75% { transform: translate(-5px, 10px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Professor/Expert Animation */
+        .professor-icon {
+            position: relative;
+            width: 70px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .prof-head {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--black-color);
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .prof-body {
+            width: 40px;
+            height: 30px;
+            background-color: var(--primary-color);
+            position: relative;
+            margin: 5px auto 0;
+            border-radius: 5px;
+        }
+
+        .prof-arm {
+            width: 20px;
+            height: 3px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 10px;
+            right: -15px;
+            transform-origin: left;
+            animation: teachingArm 2s infinite;
+        }
+
+        @keyframes teachingArm {
+            0% { transform: rotate(0); }
+            50% { transform: rotate(45deg); }
+            100% { transform: rotate(0); }
+        }
+
+        /* Computer/Laptop Animation */
+        .laptop-icon {
+            position: relative;
+            width: 70px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .laptop-screen {
+            width: 50px;
+            height: 35px;
+            border: 2px solid var(--black-color);
+            background-color: var(--primary-color);
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .laptop-keyboard {
+            width: 60px;
+            height: 10px;
+            background-color: var(--black-color);
+            position: relative;
+            margin: 0 auto;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .cursor {
+            width: 5px;
+            height: 2px;
+            background-color: var(--black-color);
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Calculator Animation */
+        .calculator-icon {
+            position: relative;
+            width: 60px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .calc-body {
+            width: 50px;
+            height: 70px;
+            background-color: var(--black-color);
+            border-radius: 5px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .calc-screen {
+            width: 40px;
+            height: 15px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 8px);
+            gap: 5px;
+            position: absolute;
+            top: 25px;
+            left: 5px;
+        }
+
+        .calc-button {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 2px;
+            animation: calcButton 3s infinite;
+        }
+
+        .calc-button:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .calc-button:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .calc-button:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .calc-button:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .calc-button:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes calcButton {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Chemistry Flask Animation */
+        .flask-icon {
+            position: relative;
+            width: 60px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .flask-body {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            margin: 15px auto 0;
+            overflow: hidden;
+        }
+
+        .flask-neck {
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 0;
+            left: 12.5px;
+            bottom: 40px;
+        }
+
+        .flask-bubble {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            animation: bubbleRise 3s infinite;
+        }
+
+        .flask-bubble:nth-child(2) {
+            left: 20px;
+            width: 6px;
+            height: 6px;
+            animation-delay: 0.5s;
+        }
+
+        .flask-bubble:nth-child(3) {
+            left: 30px;
+            width: 5px;
+            height: 5px;
+            animation-delay: 1s;
+        }
+
+        @keyframes bubbleRise {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-40px); opacity: 0; }
+        }
+
+        /* Support Chat Animation */
+        .chat-icon {
+            position: relative;
+            width: 70px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .chat-bubble {
+            width: 50px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .chat-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 10px;
+            border-width: 10px 5px 0;
+            border-style: solid;
+            border-color: var(--primary-color) transparent;
+        }
+
+        .chat-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--black-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            animation: chatTyping 1.5s infinite;
+        }
+
+        .chat-dot:nth-child(2) {
+            left: 22px;
+            animation-delay: 0.2s;
+        }
+
+        .chat-dot:nth-child(3) {
+            left: 34px;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes chatTyping {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Lock Animation */
+        .lock-icon {
+            position: relative;
+            width: 60px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .lock-body {
+            width: 40px;
+            height: 30px;
+            background-color: var(--black-color);
+            border-radius: 5px;
+            position: relative;
+            margin: 15px auto 0;
+        }
+
+        .lock-shackle {
+            width: 30px;
+            height: 20px;
+            border: 3px solid var(--black-color);
+            border-bottom: none;
+            border-radius: 15px 15px 0 0;
+            position: absolute;
+            top: -15px;
+            left: 3.5px;
+        }
+
+        .lock-keyhole {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            animation: secure 2s infinite;
+        }
+
+        @keyframes secure {
+            0% { box-shadow: 0 0 0 0 rgba(160, 235, 235, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(160, 235, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(160, 235, 235, 0); }
+        }
+
+        /* Star Rating Animation */
+        .star-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .star {
+            position: relative;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 7px;
+            border-right: 10px solid transparent;
+            border-bottom: 7px solid var(--primary-color);
+            border-left: 10px solid transparent;
+            transform: rotate(35deg);
+            animation: starPulse 2s infinite;
+        }
+        
+        .star:before {
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -4.5px;
+            left: -6.5px;
+            border-bottom: 8px solid var(--primary-color);
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            transform: rotate(-35deg);
+        }
+        
+        .star:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10.5px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid transparent;
+            border-bottom: 7px solid var(--primary-color);
+            border-left: 10px solid transparent;
+            transform: rotate(-70deg);
+        }
+
+        .star:nth-child(2) {
+            margin-left: 30px;
+            animation-delay: 0.3s;
+        }
+
+        .star:nth-child(3) {
+            margin-left: 53px;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes starPulse {
+            0% { transform: rotate(35deg) scale(1); }
+            50% { transform: rotate(35deg) scale(1.2); }
+            100% { transform: rotate(35deg) scale(1); }
+        }
+
+        /* Pencil & Paper Animation */
+        .editing-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .paper {
+            width: 40px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .pencil {
+            width: 30px;
+            height: 6px;
+            background-color: var(--black-color);
+            position: absolute;
+            top: 30px;
+            left: 28px;
+            transform: rotate(-45deg);
+            transform-origin: left;
+            animation: editPencil 3s infinite;
+        }
+
+        .pencil::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 3px 8px 3px 0;
+            border-color: transparent var(--primary-color) transparent transparent;
+            position: absolute;
+            left: -8px;
+            top: 0;
+        }
+
+        @keyframes editPencil {
+            0% { transform: rotate(-45deg) translate(0, 0); }
+            25% { transform: rotate(-45deg) translate(10px, -10px); }
+            50% { transform: rotate(-45deg) translate(5px, -5px); }
+            75% { transform: rotate(-45deg) translate(15px, -15px); }
+            100% { transform: rotate(-45deg) translate(0, 0); }
+        }
+
+        /* Diploma Animation */
+        .diploma-icon {
+            position: relative;
+            width: 70px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .diploma-roll {
+            width: 40px;
+            height: 30px;
+            background-color: white;
+            border: 2px solid var(--black-color);
+            position: relative;
+            margin: 10px auto;
+            overflow: hidden;
+            transform: perspective(200px) rotateX(10deg);
+            animation: diplomaFloating 3s infinite;
+        }
+
+        .diploma-ribbon {
+            width: 10px;
+            height: 20px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 15px;
+        }
+
+        @keyframes diplomaFloating {
+            0% { transform: perspective(200px) rotateX(10deg) translateY(0); }
+            50% { transform: perspective(200px) rotateX(10deg) translateY(-5px); }
+            100% { transform: perspective(200px) rotateX(10deg) translateY(0); }
+        }
+
+        /* Calendar Animation */
+        .calendar-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .calendar-body {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--black-color);
+            position: relative;
+            margin: 10px auto 0;
+            background-color: white;
+        }
+
+        .calendar-header {
+            width: 50px;
+            height: 10px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .calendar-day {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 25px;
+            left: 21px;
+            animation: calendarHighlight 2s infinite;
+        }
+
+        @keyframes calendarHighlight {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+        /* Thumbs Up Animation */
+        .thumbs-up-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .thumb {
+            width: 20px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            margin: 10px auto;
+            transform: rotate(-10deg);
+            animation: thumbsUpMotion 2s infinite;
+        }
+
+        .thumb::after {
+            content: "";
+            width: 20px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            top: -5px;
+            left: 5px;
+            transform: rotate(45deg);
+        }
+
+        @keyframes thumbsUpMotion {
+            0% { transform: rotate(-10deg) scale(1); }
+            50% { transform: rotate(-10deg) scale(1.1) translateY(-5px); }
+            100% { transform: rotate(-10deg) scale(1); }
+        }
+
+        /* Document Stack Animation */
+        .document-stack-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .doc {
+            width: 40px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid #ccc;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            transform: rotate(3deg);
+            animation: docStackEffect 3s infinite alternate;
+        }
+
+        .doc:nth-child(2) {
+            top: 8px;
+            left: 17px;
+            transform: rotate(0deg);
+            animation-delay: 0.2s;
+        }
+
+        .doc:nth-child(3) {
+            top: 6px;
+            left: 19px;
+            transform: rotate(-3deg);
+            animation-delay: 0.4s;
+        }
+
+        @keyframes docStackEffect {
+            0% { transform: translateY(0) rotate(3deg); }
+            100% { transform: translateY(-3px) rotate(3deg); }
+        }
+
+        .doc:nth-child(2) {
+            animation-name: docStackEffect2;
+        }
+
+        @keyframes docStackEffect2 {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-4px) rotate(0deg); }
+        }
+
+        .doc:nth-child(3) {
+            animation-name: docStackEffect3;
+        }
+
+        @keyframes docStackEffect3 {
+            0% { transform: translateY(0) rotate(-3deg); }
+            100% { transform: translateY(-5px) rotate(-3deg); }
+        }
+
+        /* Percentage Animation */
+        .percentage-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .percent-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid var(--black-color);
+            position: relative;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+
+        .percent-fill {
+            width: 50px;
+            height: 0;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: fillPercent 3s infinite;
+        }
+
+        .percent-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: var(--black-color);
+            z-index: 2;
+        }
+
+        @keyframes fillPercent {
+            0% { height: 0; }
+            50% { height: 50px; }
+            100% { height: 0; }
+        }
+
+        /* Brain Animation */
+        .brain-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .brain {
+            width: 50px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 25px 25px 0 0;
+            position: relative;
+            margin: 15px auto;
+            overflow: hidden;
+        }
+
+        .brain::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 40px;
+            border-radius: 10px 0 0 0;
+            border-left: 2px solid rgba(0,0,0,0.1);
+            left: 25px;
+            animation: brainPulse 2s infinite;
+        }
+
+        .brain::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 40px;
+            border-radius: 0 10px 0 0;
+            border-right: 2px solid rgba(0,0,0,0.1);
+            right: 25px;
+            animation: brainPulse 2s infinite;
+        }
+
+        @keyframes brainPulse {
+            0% { transform: scaleY(1); }
+            50% { transform: scaleY(0.9); }
+            100% { transform: scaleY(1); }
+        }
+
+        /* Gear Animation */
+        .gear-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .gear {
+            width: 40px;
+            height: 40px;
+            background-color: var(--black-color);
+            border-radius: 50%;
+            position: relative;
+            margin: 15px auto;
+            animation: rotate 8s linear infinite;
+        }
+
+        .gear::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .gear-tooth {
+            width: 10px;
+            height: 10px;
+            background-color: var(--black-color);
+            position: absolute;
+        }
+
+        .gear-tooth:nth-child(1) {
+            top: -5px;
+            left: 15px;
+        }
+
+        .gear-tooth:nth-child(2) {
+            top: 15px;
+            right: -5px;
+        }
+
+        .gear-tooth:nth-child(3) {
+            bottom: -5px;
+            left: 15px;
+        }
+
+        .gear-tooth:nth-child(4) {
+            top: 15px;
+            left: -5px;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Handshake Animation */
+        .handshake-icon {
+            position: relative;
+            width: 80px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .hand-left {
+            width: 20px;
+            height: 8px;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 25px;
+            left: 15px;
+            border-radius: 3px 0 0 3px;
+            animation: shakeLeft 2s infinite;
+        }
+
+        .hand-right {
+            width: 20px;
+            height: 8px;
+            background-color: var(--black-color);
+            position: absolute;
+            top: 25px;
+            right: 15px;
+            border-radius: 0 3px 3px 0;
+            animation: shakeRight 2s infinite;
+        }
+
+        @keyframes shakeLeft {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes shakeRight {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Page header and footer styles */
+        .page-header {
+            background-color: var(--primary-color);
+            padding: 20px;
+            color: var(--black-color);
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .footer {
+            background-color: var(--black-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1 class="page-title">Grade Spark Academy</h1>
+        <p class="page-subtitle">Animated Icons Collection</p>
+    </div>
+
+    <div class="container mx-auto">
+        <div class="icon-grid">
+            <!-- Essay Paper Icon -->
+            <div class="icon-container">
+                <div class="essay-icon"></div>
+                <p class="icon-title">Essay Writing</p>
+            </div>
+
+            <!-- Graduation Cap Icon -->
+            <div class="icon-container">
+                <div class="graduation-icon">
+                    <div class="graduation-cap"></div>
+                </div>
+                <p class="icon-title">Academic Achievement</p>
+            </div>
+
+            <!-- Lightbulb Icon -->
+            <div class="icon-container">
+                <div class="lightbulb-icon">
+                    <div class="bulb"></div>
+                </div>
+                <p class="icon-title">Ideas & Insights</p>
+            </div>
+
+            <!-- Clock Icon -->
+            <div class="icon-container">
+                <div class="clock-icon">
+                    <div class="clock-face">
+                        <div class="hour-hand"></div>
+                        <div class="minute-hand"></div>
+                    </div>
+                </div>
+                <p class="icon-title">On-Time Delivery</p>
+            </div>
+
+            <!-- Shield Icon -->
+            <div class="icon-container">
+                <div class="shield-icon">
+                    <div class="shield"></div>
+                </div>
+                <p class="icon-title">Plagiarism Protection</p>
+            </div>
+
+            <!-- Checkmark Icon -->
+            <div class="icon-container">
+                <div class="checkmark-icon">
+                    <div class="check-circle">
+                        <div class="checkmark"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Quality Guarantee</p>
+            </div>
+
+            <!-- Revision Cycle Icon -->
+            <div class="icon-container">
+                <div class="revision-icon">
+                    <div class="cycle-arrow">
+                        <div class="arrow-head"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Free Revisions</p>
+            </div>
+
+            <!-- Book Icon -->
+            <div class="icon-container">
+                <div class="book-icon">
+                    <div class="book-page"></div>
+                    <div class="book-cover"></div>
+                </div>
+                <p class="icon-title">Course Materials</p>
+            </div>
+
+            <!-- Magnifying Glass Icon -->
+            <div class="icon-container">
+                <div class="magnify-icon">
+                    <div class="magnify-glass">
+                        <div class="magnify-handle"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Research Help</p>
+            </div>
+
+            <!-- Professor/Expert Icon -->
+            <div class="icon-container">
+                <div class="professor-icon">
+                    <div class="prof-head"></div>
+                    <div class="prof-body">
+                        <div class="prof-arm"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Expert Support</p>
+            </div>
+
+            <!-- Computer/Laptop Icon -->
+            <div class="icon-container">
+                <div class="laptop-icon">
+                    <div class="laptop-screen">
+                        <div class="cursor"></div>
+                    </div>
+                    <div class="laptop-keyboard"></div>
+                </div>
+                <p class="icon-title">Technical Assignments</p>
+            </div>
+
+            <!-- Calculator Icon -->
+            <div class="icon-container">
+                <div class="calculator-icon">
+                    <div class="calc-body">
+                        <div class="calc-screen"></div>
+                        <div class="calc-buttons">
+                            <div class="calc-button"></div>
+                            <div class="calc-button"></div>
+                            <div class="calc-button"></div>
+                            <div class="calc-button"></div>
+                            <div class="calc-button"></div>
+                            <div class="calc-button"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="icon-title">Problem Solving</p>
+            </div>
+
+            <!-- Chemistry Flask Icon -->
+            <div class="icon-container">
+                <div class="flask-icon">
+                    <div class="flask-neck"></div>
+                    <div class="flask-body">
+                        <div class="flask-bubble"></div>
+                        <div class="flask-bubble"></div>
+                        <div class="flask-bubble"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Scientific Subjects</p>
+            </div>
+
+            <!-- Support Chat Icon -->
+            <div class="icon-container">
+                <div class="chat-icon">
+                    <div class="chat-bubble">
+                        <div class="chat-dot"></div>
+                        <div class="chat-dot"></div>
+                        <div class="chat-dot"></div>
+                    </div>
+                </div>
+                <p class="icon-title">24/7 Support</p>
+            </div>
+
+            <!-- Lock Icon -->
+            <div class="icon-container">
+                <div class="lock-icon">
+                    <div class="lock-body">
+                        <div class="lock-keyhole"></div>
+                    </div>
+                    <div class="lock-shackle"></div>
+                </div>
+                <p class="icon-title">Confidentiality</p>
+            </div>
+
+            <!-- Star Rating Icon -->
+            <div class="icon-container">
+                <div class="star-icon">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+                <p class="icon-title">Top Quality</p>
+            </div>
+
+            <!-- Pencil & Paper Icon -->
+            <div class="icon-container">
+                <div class="editing-icon">
+                    <div class="paper"></div>
+                    <div class="pencil"></div>
+                </div>
+                <p class="icon-title">Editing & Proofreading</p>
+            </div>
+
+            <!-- Diploma Icon -->
+            <div class="icon-container">
+                <div class="diploma-icon">
+                    <div class="diploma-roll">
+                        <div class="diploma-ribbon"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Dissertations</p>
+            </div>
+
+            <!-- Calendar Icon -->
+            <div class="icon-container">
+                <div class="calendar-icon">
+                    <div class="calendar-body">
+                        <div class="calendar-header"></div>
+                        <div class="calendar-day"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Deadline Management</p>
+            </div>
+
+            <!-- Thumbs Up Icon -->
+            <div class="icon-container">
+                <div class="thumbs-up-icon">
+                    <div class="thumb"></div>
+                </div>
+                <p class="icon-title">Satisfaction Guarantee</p>
+            </div>
+
+            <!-- Document Stack Icon -->
+            <div class="icon-container">
+                <div class="document-stack-icon">
+                    <div class="doc"></div>
+                    <div class="doc"></div>
+                    <div class="doc"></div>
+                </div>
+                <p class="icon-title">Multiple Assignments</p>
+            </div>
+
+            <!-- Percentage Icon -->
+            <div class="icon-container">
+                <div class="percentage-icon">
+                    <div class="percent-circle">
+                        <div class="percent-fill"></div>
+                        <div class="percent-symbol">%</div>
+                    </div>
+                </div>
+                <p class="icon-title">Grade Improvement</p>
+            </div>
+
+            <!-- Brain Icon -->
+            <div class="icon-container">
+                <div class="brain-icon">
+                    <div class="brain"></div>
+                </div>
+                <p class="icon-title">Critical Thinking</p>
+            </div>
+
+            <!-- Gear Icon -->
+            <div class="icon-container">
+                <div class="gear-icon">
+                    <div class="gear">
+                        <div class="gear-tooth"></div>
+                        <div class="gear-tooth"></div>
+                        <div class="gear-tooth"></div>
+                        <div class="gear-tooth"></div>
+                    </div>
+                </div>
+                <p class="icon-title">Technical Process</p>
+            </div>
+
+            <!-- Handshake Icon -->
+            <div class="icon-container">
+                <div class="handshake-icon">
+                    <div class="hand-left"></div>
+                    <div class="hand-right"></div>
+                </div>
+                <p class="icon-title">Trusted Partnership</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Grade Spark Academy - All Rights Reserved</p>
+    </div>
+</body>
+</html>
