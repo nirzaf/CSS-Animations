@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Spark Academy - CSS Animated Icons</title>
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --brand-black: #000000;
+            --brand-white: #ffffff;
+            --brand-celeste: #B4F8C8;
+            --icon-size: 50px; /* Base size for icons */
+            --animation-speed-slow: 3s;
+            --animation-speed-medium: 1.5s;
+            --animation-speed-fast: 0.8s;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
+            gap: 2rem;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: var(--brand-white);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .icon-label {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* --- Base Icon Styles --- */
+        .icon {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            position: relative; /* Crucial for absolutely positioned children */
+            display: inline-block;
+            transition: transform 0.3s ease; /* Base hover transition */
+            cursor: pointer;
+            /* Ensure icons themselves don't overflow their container */
+            overflow: hidden;
+        }
+
+        .icon-container:hover .icon {
+            transform: scale(1.1); /* Subtle scale on container hover */
+        }
+
+        /* --- Individual Icon Styles & Animations --- */
+
+        /* 1. Essay Paper */
+        .icon.essay-paper {
+            border: 2px solid var(--brand-black);
+            background-color: var(--brand-white);
+            border-radius: 3px;
+            /* overflow: hidden; Already on .icon */
+        }
+        .icon.essay-paper::before { /* Writing line 1 */
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 2px;
+            background-color: var(--brand-black);
+            top: 25%;
+            left: 15%;
+            animation: writeLine var(--animation-speed-medium) ease-in-out infinite alternate;
+        }
+        .icon.essay-paper::after { /* Writing line 2 */
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--brand-black);
+            top: 50%;
+            left: 15%;
+            animation: writeLine var(--animation-speed-medium) ease-in-out infinite alternate 0.5s; /* Delay second line */
+        }
+        @keyframes writeLine {
+            from { width: 0%; }
+            to { width: 70%; }
+        }
+        .icon-container:hover .essay-paper::before,
+        .icon-container:hover .essay-paper::after {
+             animation-play-state: paused; /* Pause writing on hover */
+        }
+
+        /* 2. Graduation Cap */
+        .icon.graduation-cap .cap-top {
+            width: 100%;
+            height: 15%;
+            background-color: var(--brand-black);
+            position: absolute;
+            top: 30%;
+            left: 0; /* Ensure it starts from the left edge */
+            border-radius: 2px;
+        }
+        .icon.graduation-cap .cap-body {
+            width: 70%;
+            height: 45%;
+            background-color: var(--brand-black);
+            position: absolute;
+            bottom: 10%;
+            left: 15%;
+            border-radius: 0 0 5px 5px;
+        }
+         .icon.graduation-cap .tassel {
+            width: 4px;
+            height: 30%;
+            background-color: var(--brand-celeste);
+            position: absolute;
+            top: 5%;
+            left: 48%; /* Center of the cap top */
+            transform-origin: top center;
+            animation: swing var(--animation-speed-medium) ease-in-out infinite alternate;
+        }
+        .icon.graduation-cap {
+             animation: pulse var(--animation-speed-medium) ease-in-out infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+         @keyframes swing {
+            from { transform: rotate(-10deg); }
+            to { transform: rotate(10deg); }
+        }
+        .icon-container:hover .graduation-cap {
+             animation-play-state: paused; /* Pause pulsing on hover */
+        }
+         .icon-container:hover .tassel {
+             animation-play-state: running; /* Keep tassel swinging */
+         }
+
+        /* 3. Lightbulb */
+        .icon.lightbulb {
+            border-radius: 50% 50% 5px 5px;
+            border: 2px solid var(--brand-black);
+            position: relative; /* Keep relative for children */
+            background-color: var(--brand-white);
+             animation: glow var(--animation-speed-medium) ease-in-out infinite alternate;
+            /* No absolute positioning needed here */
+            width: 80%; /* Adjust size slightly if needed */
+            height: 80%;
+            margin: 10% auto 0; /* Center and push down */
+        }
+        .icon.lightbulb .base {
+            width: 40%;
+            height: 20%;
+            background-color: var(--brand-black);
+            position: absolute;
+            bottom: -2px; /* Overlap border slightly */
+            left: 30%; /* Center base relative to bulb */
+            border-radius: 0 0 3px 3px;
+        }
+         .icon.lightbulb .filament { /* Simple representation */
+            width: 4px;
+            height: 30%;
+            background-color: var(--brand-celeste);
+            position: absolute;
+            top: 20%;
+            left: calc(50% - 2px); /* Center filament */
+            border-radius: 2px;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px var(--brand-celeste); background-color: var(--brand-white);}
+            to { box-shadow: 0 0 15px 5px var(--brand-celeste); background-color: #f0fff5;}
+        }
+        .icon-container:hover .lightbulb {
+             animation-play-state: paused; /* Pause glow on hover */
+             box-shadow: 0 0 15px 5px var(--brand-celeste); /* Keep glow state */
+        }
+
+        /* 4. Clock */
+        .icon.clock {
+            border: 3px solid var(--brand-black);
+            border-radius: 50%;
+            background-color: var(--brand-white);
+            /* Position relative is inherited from .icon */
+        }
+        .icon.clock .center-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--brand-black);
+            border-radius: 50%;
+            position: absolute;
+            top: calc(50% - 3px);
+            left: calc(50% - 3px);
+        }
+        .icon.clock .hand {
+            position: absolute;
+            background-color: var(--brand-black);
+            bottom: 50%;
+            left: calc(50% - 1px);
+            transform-origin: bottom center;
+            border-radius: 1px;
+        }
+        .icon.clock .hour-hand {
+            width: 2px;
+            height: 25%;
+            animation: rotateHour var(--animation-speed-slow) linear infinite;
+        }
+        .icon.clock .minute-hand {
+            width: 2px;
+            height: 40%;
+            background-color: var(--brand-celeste); /* Highlight minute hand */
+            animation: rotateMinute calc(var(--animation-speed-slow) / 12) linear infinite; /* Faster rotation */
+        }
+        @keyframes rotateHour {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes rotateMinute {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+         .icon-container:hover .clock .hand {
+             animation-play-state: paused; /* Pause hands on hover */
+         }
+
+        /* 5. Shield - FIXED */
+        .icon.shield {
+            width: 90%; /* Takes 90% width of .icon container */
+            height: 90%; /* Takes 90% height of .icon container */
+            background-color: var(--brand-black);
+            /* position: absolute; <--- REMOVED */
+            /* top: 5%; <--- REMOVED */
+            /* left: 5%; <--- REMOVED */
+            margin: 5% auto 0; /* Center horizontally within .icon, push down 5% */
+            clip-path: polygon(50% 0%, 100% 10%, 100% 60%, 50% 100%, 0% 60%, 0% 10%);
+            animation: shieldProtect var(--animation-speed-medium) ease-in-out infinite alternate;
+            position: relative; /* Add relative positioning for the ::before element */
+        }
+        .icon.shield::before { /* Inner highlight */
+            content: '';
+            position: absolute; /* Position relative to .icon.shield */
+            width: 60%;
+            height: 60%;
+            background-color: var(--brand-celeste);
+            top: 20%; /* Position within the shield */
+            left: 20%; /* Position within the shield */
+            clip-path: polygon(50% 0%, 100% 10%, 100% 60%, 50% 100%, 0% 60%, 0% 10%);
+            opacity: 0.8;
+        }
+        @keyframes shieldProtect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        /* Hover effect targets the container, affecting the icon inside */
+        .icon-container:hover .shield {
+             animation-play-state: paused;
+             /* The main scale effect is on .icon, this transform might conflict or be redundant */
+             /* Let's rely on the .icon scale for hover for consistency */
+             /* transform: scale(1.08); */ /* Removed to avoid conflict */
+        }
+         /* Ensure the base icon hover scale still applies */
+         .icon-container:hover .icon.shield {
+              transform: scale(1.1); /* Inherit base hover scale */
+         }
+
+
+        /* 6. Checkmark */
+        .icon.checkmark {
+            /* Position relative is inherited */
+            width: 100%; /* Ensure it fills the container for transform */
+            height: 100%;
+        }
+        .icon.checkmark > div { /* Wrap checkmark parts in a div for animation */
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: rotate(45deg) scale(0.8); /* Initial state */
+            opacity: 0;
+            animation: drawCheck var(--animation-speed-fast) ease-out forwards; /* Animate once */
+            animation-delay: 0.2s;
+        }
+        .icon.checkmark > div::before,
+        .icon.checkmark > div::after {
+            content: '';
+            position: absolute;
+            background-color: var(--brand-celeste);
+            border-radius: 2px;
+        }
+        .icon.checkmark > div::before { /* Shorter leg */
+            width: 30%;
+            height: 10%;
+            top: 50%;
+            left: 15%;
+        }
+        .icon.checkmark > div::after { /* Longer leg */
+            width: 10%;
+            height: 60%;
+            top: 20%;
+            left: 50%;
+        }
+        @keyframes drawCheck {
+            0% { transform: rotate(45deg) scale(0.8); opacity: 0; }
+            70% { transform: rotate(45deg) scale(1.1); opacity: 1; }
+            100% { transform: rotate(45deg) scale(1); opacity: 1; }
+        }
+        /* Re-trigger animation on hover */
+        .icon-container:hover .checkmark > div {
+            animation: none; /* Reset */
+            /* Force reflow */
+            /* stylelint-disable-next-line declaration-no-important */
+            offset: none !important;
+            animation: drawCheck var(--animation-speed-fast) ease-out forwards;
+        }
+
+
+        /* 7. Revision Cycle */
+        .icon.revision-cycle {
+            border: 4px solid var(--brand-black);
+            border-radius: 50%;
+            border-left-color: transparent; /* Break in circle */
+            animation: spin var(--animation-speed-medium) linear infinite;
+            box-sizing: border-box; /* Include border in size */
+        }
+        .icon.revision-cycle::before { /* Arrowhead */
+            content: '';
+            position: absolute;
+            border: 6px solid transparent;
+            border-top-color: var(--brand-black);
+            /* Adjust positioning relative to border box */
+            top: -2px;
+            left: -8px;
+            transform: rotate(10deg);
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .icon-container:hover .revision-cycle {
+            border-color: var(--brand-celeste); /* Change color on hover */
+            border-left-color: transparent;
+            animation-duration: calc(var(--animation-speed-medium) * 0.7); /* Speed up */
+        }
+         .icon-container:hover .revision-cycle::before {
+             border-top-color: var(--brand-celeste);
+         }
+
+        /* 8. Book */
+        .icon.book {
+            perspective: 500px; /* For 3D effect */
+            /* Position relative inherited */
+        }
+        .icon.book .cover {
+            width: 50%;
+            height: 90%;
+            background-color: var(--brand-black);
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform-origin: left center;
+            border-radius: 0 5px 5px 0;
+            transition: transform var(--animation-speed-fast) ease-in-out;
+            transform-style: preserve-3d; /* Needed for backface */
+            backface-visibility: hidden; /* Hide back when closed */
+        }
+        .icon.book .pages {
+            width: 48%; /* Slightly smaller than cover */
+            height: 90%;
+            background-color: var(--brand-white);
+            border: 1px solid #eee;
+            position: absolute;
+            top: 5%;
+            left: 0; /* Align to the left edge */
+            border-radius: 5px 0 0 5px;
+            box-shadow: inset 2px 0 3px rgba(0,0,0,0.1); /* Spine shadow */
+        }
+        .icon.book .cover-back { /* Visible when open */
+             width: 100%;
+             height: 100%;
+             background-color: var(--brand-celeste);
+             position: absolute;
+             top: 0;
+             left: 0;
+             transform: rotateY(180deg); /* Initially hidden */
+             border-radius: 5px 0 0 5px; /* Mirrored radius */
+             backface-visibility: hidden;
+        }
+        .icon-container:hover .icon.book .cover {
+            transform: rotateY(-160deg); /* Open the book */
+        }
+
+        /* 9. Magnifying Glass */
+        .icon.magnifying-glass {
+             /* Position relative inherited */
+        }
+        .icon.magnifying-glass .handle {
+            width: 30%;
+            height: 30%;
+            background-color: var(--brand-black);
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            transform: rotate(45deg);
+            border-radius: 3px;
+        }
+        .icon.magnifying-glass .lens {
+            width: 65%;
+            height: 65%;
+            border: 4px solid var(--brand-black);
+            border-radius: 50%;
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            background-color: rgba(180, 248, 200, 0.3); /* Light celeste tint */
+            animation: searchFocus var(--animation-speed-medium) ease-in-out infinite alternate;
+            box-sizing: border-box; /* Include border */
+        }
+        @keyframes searchFocus {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(3px, 3px) scale(1.05); } /* Slight move and scale */
+        }
+         .icon-container:hover .magnifying-glass .lens {
+             animation-play-state: paused;
+             background-color: rgba(180, 248, 200, 0.5); /* Enhance tint */
+         }
+
+        /* 10. Professor/Expert */
+        .icon.professor {
+             /* Position relative inherited */
+        }
+        .icon.professor .head {
+            width: 30%; height: 30%;
+            background-color: var(--brand-black);
+            border-radius: 50%;
+            position: absolute; top: 10%; left: 35%;
+        }
+        .icon.professor .body {
+            width: 40%; height: 40%;
+            background-color: var(--brand-black);
+            position: absolute; top: 40%; left: 30%;
+            border-radius: 10px 10px 0 0;
+        }
+        .icon.professor .arm { /* Pointer */
+            width: 40%; height: 8%;
+            background-color: var(--brand-celeste);
+            position: absolute; top: 45%; left: 60%;
+            transform-origin: left center;
+            border-radius: 4px;
+            animation: point var(--animation-speed-medium) ease-in-out infinite alternate;
+        }
+        @keyframes point {
+            from { transform: rotate(-10deg) translateX(0); }
+            to { transform: rotate(10deg) translateX(5%); }
+        }
+        .icon-container:hover .professor .arm {
+            transform: rotate(0deg) translateX(0); /* Stop pointing */
+            background-color: var(--brand-black); /* Change arm color */
+        }
+
+        /* 11. Computer/Laptop */
+        .icon.laptop {
+             /* Position relative inherited */
+        }
+        .icon.laptop .base {
+            width: 100%; height: 10%;
+            background-color: var(--brand-black);
+            position: absolute; bottom: 10%; left: 0;
+            border-radius: 0 0 5px 5px;
+        }
+        .icon.laptop .screen {
+            width: 80%; height: 60%;
+            background-color: var(--brand-white);
+            border: 3px solid var(--brand-black);
+            position: absolute; bottom: 20%; left: 10%;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden; /* Hide cursor overflow */
+            box-sizing: border-box;
+        }
+        .icon.laptop .screen::before { /* Typing indicator */
+            content: '_';
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--brand-celeste);
+            position: absolute;
+            bottom: 5px; left: 10px;
+            font-size: 1.5em; /* Relative to parent font size */
+            line-height: 1; /* Adjust line height */
+            animation: blinkCursor var(--animation-speed-fast) steps(1) infinite;
+        }
+        @keyframes blinkCursor {
+            50% { opacity: 0; }
+        }
+        .icon-container:hover .laptop .screen::before {
+            animation-play-state: paused;
+            opacity: 1;
+            color: var(--brand-black);
+        }
+
+        /* 12. Calculator */
+        .icon.calculator {
+            background-color: var(--brand-black);
+            border-radius: 5px;
+            padding: 10%;
+            box-sizing: border-box;
+            height: 100%; /* Ensure it fills height */
+            width: 100%; /* Ensure it fills width */
+        }
+        .icon.calculator .display {
+            width: 100%; height: 25%;
+            background-color: var(--brand-celeste);
+            border-radius: 3px;
+            margin-bottom: 10%;
+            position: relative;
+            overflow: hidden;
+        }
+         .icon.calculator .display::after { /* Animated number */
+             content: '...';
+             position: absolute;
+             right: 5px;
+             bottom: 0px;
+             color: var(--brand-black);
+             font-size: 0.9em;
+             font-weight: bold;
+             line-height: 1.2; /* Adjust for vertical alignment */
+             animation: calcResult var(--animation-speed-medium) steps(3, end) infinite;
+         }
+        .icon.calculator .button {
+            width: 20%; height: 12%;
+            background-color: var(--brand-white);
+            border-radius: 2px;
+            float: left;
+            margin: 2.5%; /* Spacing */
+            transition: background-color 0.2s ease;
+        }
+         @keyframes calcResult {
+             0% { content: '123'; }
+             33% { content: '456'; }
+             66% { content: '789'; }
+             100% { content: '...'; }
+         }
+        .icon-container:hover .calculator .button:nth-child(odd) { /* Highlight some buttons */
+            background-color: var(--brand-celeste);
+        }
+         .icon-container:hover .calculator .display::after {
+             animation-play-state: paused;
+             content: 'OK!';
+         }
+
+        /* 13. Chemistry Flask */
+        .icon.flask {
+            border: 3px solid var(--brand-black);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Flask shape */
+            background-color: var(--brand-white);
+            /* overflow: hidden; Already on .icon */
+            box-sizing: border-box;
+            position: relative; /* Needed for absolute children */
+        }
+        .icon.flask .neck {
+            width: 30%; height: 30%;
+            border: 3px solid var(--brand-black);
+            border-bottom: none;
+            background-color: var(--brand-white); /* Match background */
+            position: absolute; top: -3px; left: 35%;
+            border-radius: 5px 5px 0 0;
+            box-sizing: border-box;
+            z-index: 1; /* Above liquid */
+        }
+        .icon.flask .liquid {
+            width: 100%; height: 40%;
+            background-color: var(--brand-celeste);
+            position: absolute; bottom: 0; left: 0;
+            border-radius: 0 0 15px 15px; /* Match bottom curve approx */
+        }
+        .icon.flask .bubble {
+            width: 6px; height: 6px;
+            background-color: var(--brand-white);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5%; left: 50%;
+            animation: bubbleUp var(--animation-speed-medium) linear infinite;
+            z-index: 1; /* Above liquid */
+        }
+        /* Make sure bubbles are indexed correctly relative to the flask */
+        .icon.flask .bubble:nth-of-type(1) { left: 50%; animation-delay: 0s; width: 6px; height: 6px;} /* First bubble element */
+        .icon.flask .bubble:nth-of-type(2) { left: 30%; animation-delay: 0.5s; width: 4px; height: 4px;}/* Second bubble element */
+        .icon.flask .bubble:nth-of-type(3) { left: 70%; animation-delay: 1s; width: 5px; height: 5px;} /* Third bubble element */
+
+        @keyframes bubbleUp {
+            from { bottom: 5%; opacity: 1; transform: scale(0.5);}
+            to { bottom: 60%; opacity: 0; transform: scale(1);}
+        }
+        .icon-container:hover .flask .bubble {
+            animation-play-state: paused; /* Pause bubbles */
+        }
+
+        /* 14. Support Chat */
+        .icon.support-chat {
+            background-color: var(--brand-black);
+            border-radius: 10px;
+            position: relative; /* For tail and dots */
+            width: 80%; /* Adjust size */
+            height: 60%;
+            margin: auto; /* Center */
+        }
+        .icon.support-chat::after { /* Tail */
+            content: '';
+            position: absolute;
+            width: 0; height: 0;
+            border: 8px solid transparent;
+            border-top-color: var(--brand-black);
+            bottom: -15px; left: 20%;
+        }
+        .icon.support-chat .dot {
+            width: 8px; height: 8px;
+            background-color: var(--brand-celeste);
+            border-radius: 50%;
+            position: absolute;
+            top: calc(50% - 4px);
+            animation: typingDots var(--animation-speed-medium) ease-in-out infinite;
+        }
+        /* Select dots based on their order in the HTML */
+        .icon.support-chat .dot:nth-of-type(1) { left: 25%; animation-delay: 0s; }
+        .icon.support-chat .dot:nth-of-type(2) { left: 45%; animation-delay: 0.2s; }
+        .icon.support-chat .dot:nth-of-type(3) { left: 65%; animation-delay: 0.4s; }
+        @keyframes typingDots {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+        .icon-container:hover .support-chat .dot {
+            animation: none; /* Stop animation */
+            background-color: var(--brand-white); /* Change color */
+        }
+
+        /* 15. Lock */
+        .icon.lock {
+             /* Position relative inherited */
+        }
+        .icon.lock .body {
+            width: 70%; height: 60%;
+            background-color: var(--brand-black);
+            position: absolute; bottom: 10%; left: 15%;
+            border-radius: 5px;
+        }
+        .icon.lock .shackle {
+            width: 40%; height: 40%;
+            border: 5px solid var(--brand-black);
+            border-bottom: none;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0; /* Arch shape */
+            position: absolute; top: 10%; left: 30%;
+            transition: transform var(--animation-speed-fast) ease-in-out, border-color var(--animation-speed-fast) ease-in-out; /* Added border-color transition */
+            box-sizing: border-box;
+        }
+        .icon-container:hover .lock .shackle {
+            transform: translateY(-8px) rotate(-15deg); /* Unlock animation */
+            border-color: var(--brand-celeste);
+        }
+
+        /* 16. Star Rating */
+        .icon.star-rating {
+            font-size: calc(var(--icon-size) * 0.9);
+            line-height: var(--icon-size);
+            color: #ccc; /* Default empty star color */
+            position: relative; /* For pseudo-elements */
+             /* overflow: hidden; Already on .icon */
+             text-align: center; /* Center the star */
+        }
+         .icon.star-rating::before { /* The filled part */
+             content: '★';
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 0%; /* Initially empty */
+             color: var(--brand-celeste);
+             overflow: hidden; /* Clip the fill */
+             animation: fillStar var(--animation-speed-medium) ease-in-out infinite alternate;
+             z-index: 1; /* Ensure fill is above outline */
+             line-height: inherit; /* Match parent */
+         }
+        .icon.star-rating::after { /* The outline/base star */
+             content: '★';
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             color: var(--brand-black); /* Outline color */
+             /* z-index: -1; Removed, let fill be on top */
+             line-height: inherit; /* Match parent */
+         }
+
+        @keyframes fillStar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        .icon-container:hover .star-rating::before {
+            animation: none;
+            width: 100%; /* Fill completely on hover */
+            color: var(--brand-black); /* Change fill color */
+        }
+         .icon-container:hover .star-rating::after {
+             color: var(--brand-celeste); /* Change outline */
+         }
+
+        /* 17. Pencil & Paper */
+        .icon.pencil-paper {
+             /* Position relative inherited */
+        }
+        .icon.pencil-paper .paper {
+            width: 70%; height: 80%;
+            background: var(--brand-white);
+            border: 2px solid var(--brand-black);
+            position: absolute; bottom: 5%; right: 5%;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .icon.pencil-paper .pencil {
+            width: 15%; height: 60%;
+            background: var(--brand-celeste);
+            border: 2px solid var(--brand-black);
+            position: absolute; top: 5%; left: 15%;
+            border-radius: 3px 3px 0 0;
+            transform: rotate(-10deg);
+            transform-origin: bottom center;
+            animation: writing var(--animation-speed-medium) ease-in-out infinite alternate;
+            box-sizing: border-box;
+        }
+        .icon.pencil-paper .pencil::after { /* Tip */
+            content: '';
+            position: absolute;
+            bottom: -10px; left: -2px; /* Position below */
+            border: calc(var(--icon-size) * 0.08) solid transparent; /* Adjust size relative to icon */
+            border-top-color: var(--brand-black);
+        }
+        @keyframes writing {
+            from { transform: rotate(-10deg) translateY(0); }
+            to { transform: rotate(5deg) translateY(-5px); }
+        }
+        .icon-container:hover .pencil-paper .pencil {
+            animation-play-state: paused;
+            transform: rotate(-10deg) translateY(0);
+            background-color: var(--brand-black); /* Change pencil color */
+        }
+         .icon-container:hover .pencil-paper .pencil::after {
+             border-top-color: var(--brand-celeste); /* Change tip color */
+         }
+
+        /* 18. Diploma */
+        .icon.diploma {
+            background-color: var(--brand-white);
+            border: 2px solid var(--brand-black);
+            border-radius: 5px;
+            transform: rotate(-15deg); /* Tilted */
+            position: relative; /* For pseudo-elements */
+            width: 80%; /* Adjust size */
+            height: 50%;
+            margin: auto; /* Center */
+            transition: transform 0.3s ease-in-out; /* Add transition for straightening */
+            box-sizing: border-box;
+        }
+        .icon.diploma::before { /* Ribbon */
+            content: '';
+            width: 15px; height: 30px;
+            background-color: var(--brand-celeste);
+            border: 1px solid var(--brand-black);
+            border-radius: 3px;
+            position: absolute;
+            top: calc(50% - 15px); left: calc(50% - 7.5px);
+            animation: pulseRibbon var(--animation-speed-medium) ease-in-out infinite alternate;
+            box-sizing: border-box;
+        }
+         .icon.diploma::after { /* Ribbon tails */
+             content: '';
+             position: absolute;
+             width: 0; height: 0;
+             border-left: 5px solid transparent;
+             border-right: 5px solid transparent;
+             border-top: 10px solid var(--brand-celeste);
+             top: calc(50% + 10px); left: calc(50% - 5px);
+             transform: rotate(15deg);
+         }
+        @keyframes pulseRibbon {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .icon-container:hover .diploma {
+            transform: rotate(0deg); /* Straighten on hover */
+        }
+        .icon-container:hover .diploma::before {
+            animation-play-state: paused;
+            background-color: var(--brand-black);
+            border-color: var(--brand-celeste);
+        }
+         .icon-container:hover .diploma::after {
+             border-top-color: var(--brand-black);
+         }
+
+        /* 19. Calendar */
+        .icon.calendar {
+            border: 2px solid var(--brand-black);
+            border-radius: 5px;
+            background-color: var(--brand-white);
+            position: relative; /* For children */
+            box-sizing: border-box;
+            width: 90%; /* Adjust size */
+            height: 90%;
+            margin: auto; /* Center */
+        }
+        .icon.calendar .header {
+            width: 100%; height: 25%;
+            background-color: var(--brand-black);
+            border-radius: 3px 3px 0 0;
+        }
+        .icon.calendar .day { /* Highlighted day */
+            width: 20%; height: 15%;
+            background-color: var(--brand-celeste);
+            position: absolute; top: 45%; left: 40%;
+            border-radius: 2px;
+            animation: highlightDay var(--animation-speed-medium) ease-in-out infinite alternate;
+        }
+        @keyframes highlightDay {
+            from { transform: scale(1); box-shadow: 0 0 0px var(--brand-celeste); }
+            to { transform: scale(1.1); box-shadow: 0 0 5px var(--brand-celeste); }
+        }
+        .icon-container:hover .calendar .day {
+            animation-play-state: paused;
+            background-color: var(--brand-black);
+            transform: scale(1.1);
+        }
+
+        /* 20. Thumbs Up */
+        .icon.thumbs-up {
+             font-size: calc(var(--icon-size) * 0.8);
+             line-height: var(--icon-size);
+             color: var(--brand-black);
+             animation: thumbsBob var(--animation-speed-medium) ease-in-out infinite alternate;
+             display: inline-block; /* Needed for animation */
+             text-align: center;
+             width: 100%; /* Fill container */
+        }
+         .icon.thumbs-up::before {
+             content: '👍';
+         }
+        @keyframes thumbsBob {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(-5px) rotate(5deg); }
+        }
+        .icon-container:hover .thumbs-up {
+            animation-play-state: paused;
+            color: var(--brand-celeste);
+            text-shadow: 0 0 5px var(--brand-black);
+        }
+
+        /* 21. Document Stack */
+        .icon.doc-stack {
+             /* Position relative inherited */
+        }
+        .icon.doc-stack .doc {
+            width: 70%; height: 60%;
+            background: var(--brand-white);
+            border: 2px solid var(--brand-black);
+            border-radius: 3px;
+            position: absolute;
+            transition: transform 0.3s ease-out, border-color 0.3s ease-out; /* Added border-color */
+            box-sizing: border-box;
+        }
+        .icon.doc-stack .doc1 { bottom: 30%; left: 15%; z-index: 3; }
+        .icon.doc-stack .doc2 { bottom: 20%; left: 20%; z-index: 2; background-color: #eee; } /* Slightly different color */
+        .icon.doc-stack .doc3 { bottom: 10%; left: 25%; z-index: 1; background-color: #ddd; }
+        .icon-container:hover .doc-stack .doc1 { transform: translateY(-10px) rotate(-3deg); }
+        .icon-container:hover .doc-stack .doc2 { transform: translateY(-5px) rotate(2deg); }
+        .icon-container:hover .doc-stack .doc3 { transform: translateY(0px) rotate(-1deg); } /* Slight adjustment */
+        .icon-container:hover .doc-stack .doc { border-color: var(--brand-celeste); }
+
+        /* 22. Percentage */
+        .icon.percentage {
+            font-size: calc(var(--icon-size) * 0.7);
+            font-weight: bold;
+            line-height: var(--icon-size);
+            color: var(--brand-black);
+            position: relative; /* For children */
+            text-align: center; /* Center elements */
+            width: 100%;
+        }
+        .icon.percentage .circle {
+            width: 15%; height: 15%;
+            border: 3px solid var(--brand-black);
+            border-radius: 50%;
+            position: absolute;
+            box-sizing: border-box;
+        }
+        .icon.percentage .c1 { top: 20%; left: 20%; animation: pulsePercent var(--animation-speed-medium) ease-in-out infinite alternate 0s;}
+        .icon.percentage .c2 { bottom: 20%; right: 20%; animation: pulsePercent var(--animation-speed-medium) ease-in-out infinite alternate 0.5s;}
+        .icon.percentage .slash {
+            width: 5%; height: 70%;
+            background-color: var(--brand-black);
+            position: absolute; top: 15%; left: 47.5%;
+            transform: rotate(20deg);
+            transition: background-color 0.3s ease-in-out;
+        }
+        @keyframes pulsePercent {
+            from { transform: scale(1); border-color: var(--brand-black); }
+            to { transform: scale(1.2); border-color: var(--brand-celeste); }
+        }
+        .icon-container:hover .percentage .circle {
+            animation-play-state: paused;
+            border-color: var(--brand-celeste); /* Hold highlight color */
+            transform: scale(1.2); /* Hold scale */
+        }
+        .icon-container:hover .percentage .slash { background-color: var(--brand-celeste); }
+
+        /* 23. Brain */
+        .icon.brain {
+            border: 3px solid var(--brand-black);
+            border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%; /* Brain-like shape */
+            background-color: var(--brand-white);
+            position: relative; /* For pseudo-elements */
+            /* overflow: hidden; Already on .icon */
+            animation: brainThink var(--animation-speed-slow) ease-in-out infinite alternate;
+            box-sizing: border-box;
+            width: 90%; /* Adjust size */
+            height: 80%;
+            margin: auto; /* Center */
+            transition: border-color 0.3s ease-in-out; /* Add transition */
+        }
+        .icon.brain::before, .icon.brain::after { /* Squiggly lines */
+            content: '';
+            position: absolute;
+            width: 50%; height: 50%;
+            border: 2px solid var(--brand-celeste);
+            border-radius: 50%;
+            opacity: 0.7;
+            box-sizing: border-box;
+        }
+        .icon.brain::before { top: 10%; left: 5%; border-color: transparent var(--brand-celeste) var(--brand-celeste) transparent; transform: rotate(45deg);}
+        .icon.brain::after { bottom: 10%; right: 5%; border-color: var(--brand-celeste) transparent transparent var(--brand-celeste); transform: rotate(-30deg);}
+        @keyframes brainThink {
+            from { box-shadow: 0 0 2px var(--brand-celeste); }
+            to { box-shadow: 0 0 10px 3px var(--brand-celeste); }
+        }
+        .icon-container:hover .brain {
+            animation-play-state: paused;
+            border-color: var(--brand-celeste);
+            box-shadow: 0 0 10px 3px var(--brand-celeste); /* Hold glow */
+        }
+
+        /* 24. Gear */
+        .icon.gear {
+            font-size: calc(var(--icon-size) * 0.9);
+            line-height: var(--icon-size);
+            color: var(--brand-black);
+            display: inline-block; /* Important for transform/animation */
+            animation: spin var(--animation-speed-slow) linear infinite;
+            width: 100%; /* Fill container */
+            text-align: center;
+        }
+         .icon.gear::before {
+             content: '⚙️'; /* Gear emoji */
+         }
+        /* Keyframes spin is already defined for revision-cycle */
+        .icon-container:hover .gear {
+            animation-duration: calc(var(--animation-speed-slow) * 0.5); /* Faster spin */
+            color: var(--brand-celeste);
+            text-shadow: 1px 1px 2px var(--brand-black);
+        }
+
+        /* 25. Handshake */
+        .icon.handshake {
+             /* Position relative inherited */
+        }
+        .icon.handshake .hand {
+            width: 45%; height: 30%;
+            background-color: var(--brand-black);
+            border-radius: 5px;
+            position: absolute;
+            bottom: 35%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .icon.handshake .hand1 { left: 5%; }
+        .icon.handshake .hand2 { right: 5%; background-color: var(--brand-celeste); }
+        .icon-container:hover .handshake .hand1 { transform: translateX(10%) rotate(-5deg); }
+        .icon-container:hover .handshake .hand2 { transform: translateX(-10%) rotate(5deg); }
+
+    </style>
+</head>
+<body>
+
+    <div class="icon-grid">
+        <div class="icon-container">
+            <div class="icon essay-paper"></div>
+            <div class="icon-label">Essay Paper</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon graduation-cap">
+                <div class="cap-top"></div>
+                <div class="cap-body"></div>
+                <div class="tassel"></div>
+            </div>
+            <div class="icon-label">Graduation Cap</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon lightbulb">
+                <div class="base"></div>
+                <div class="filament"></div>
+            </div>
+            <div class="icon-label">Lightbulb</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon clock">
+                <div class="center-dot"></div>
+                <div class="hand hour-hand"></div>
+                <div class="hand minute-hand"></div>
+            </div>
+            <div class="icon-label">Clock</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon shield">
+                 </div>
+            <div class="icon-label">Shield</div>
+        </div>
+
+        <div class="icon-container">
+             <div class="icon checkmark"><div></div></div>
+            <div class="icon-label">Checkmark</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon revision-cycle"></div>
+            <div class="icon-label">Revision Cycle</div>
+        </div>
+         <div class="icon-container">
+            <div class="icon book">
+                 <div class="pages"></div>
+                 <div class="cover">
+                     <div class="cover-back"></div>
+                 </div>
+            </div>
+            <div class="icon-label">Book</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon magnifying-glass">
+                <div class="lens"></div>
+                <div class="handle"></div>
+            </div>
+            <div class="icon-label">Magnifying Glass</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon professor">
+                <div class="head"></div>
+                <div class="body"></div>
+                <div class="arm"></div>
+            </div>
+            <div class="icon-label">Professor/Expert</div>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon laptop">
+                <div class="screen"></div>
+                <div class="base"></div>
+            </div>
+            <div class="icon-label">Computer/Laptop</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon calculator">
+                <div class="display"></div>
+                <div class="button"></div><div class="button"></div><div class="button"></div>
+                <div class="button"></div><div class="button"></div><div class="button"></div>
+                <div class="button"></div><div class="button"></div><div class="button"></div>
+            </div>
+            <div class="icon-label">Calculator</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon flask">
+                <div class="neck"></div>
+                <div class="liquid"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+            <div class="icon-label">Chemistry Flask</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon support-chat">
+                 <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="icon-label">Support Chat</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon lock">
+                <div class="shackle"></div>
+                <div class="body"></div>
+            </div>
+            <div class="icon-label">Lock</div>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon star-rating"></div>
+            <div class="icon-label">Star Rating</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon pencil-paper">
+                <div class="paper"></div>
+                <div class="pencil"></div>
+            </div>
+            <div class="icon-label">Pencil & Paper</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon diploma"></div>
+            <div class="icon-label">Diploma</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon calendar">
+                <div class="header"></div>
+                <div class="day"></div>
+            </div>
+            <div class="icon-label">Calendar</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon thumbs-up"></div>
+            <div class="icon-label">Thumbs Up</div>
+        </div>
+
+        <div class="icon-container">
+            <div class="icon doc-stack">
+                <div class="doc doc1"></div>
+                <div class="doc doc2"></div>
+                <div class="doc doc3"></div>
+            </div>
+            <div class="icon-label">Document Stack</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon percentage">
+                <div class="circle c1"></div>
+                <div class="slash"></div>
+                <div class="circle c2"></div>
+            </div>
+            <div class="icon-label">Percentage</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon brain"></div>
+            <div class="icon-label">Brain</div>
+        </div>
+        <div class="icon-container">
+             <div class="icon gear"></div>
+            <div class="icon-label">Gear</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon handshake">
+                <div class="hand hand1"></div>
+                <div class="hand hand2"></div>
+            </div>
+            <div class="icon-label">Handshake</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
