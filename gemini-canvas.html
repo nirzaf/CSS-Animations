@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Spark Academy - Animated Icons</title>
+    <style>
+        /* Define color variables based on the provided palette */
+        :root {
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            /* Using Sky Blue as the Celeste shade for good visibility */
+            --color-celeste: #87CEEB;
+            --color-grey-bg: #f0f0f0; /* Background for container */
+        }
+
+        /* Basic styling for layout */
+        body {
+            font-family: sans-serif;
+            background-color: var(--color-white);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align top */
+            min-height: 100vh;
+            padding: 30px 20px; /* More vertical padding */
+            box-sizing: border-box;
+        }
+
+        /* Container for the icons */
+        .icon-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow icons to wrap */
+            gap: 30px 20px; /* Row and column gap */
+            justify-content: center;
+            align-items: flex-start; /* Align items at the start of each row */
+            background-color: var(--color-grey-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px; /* Max width to control layout */
+        }
+
+        /* Styling for each icon wrapper */
+        .icon-wrapper {
+            text-align: center;
+            width: 110px; /* Slightly smaller width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Common styles for all icons */
+        .animated-icon {
+            width: 55px; /* Slightly smaller icon size */
+            height: 55px;
+            margin-bottom: 8px; /* Space between icon and label */
+            display: inline-block;
+        }
+
+        /* Label styling */
+        .icon-label {
+            font-size: 13px; /* Slightly smaller font */
+            color: var(--color-black);
+            font-weight: bold;
+            height: 30px; /* Fixed height for alignment */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Shared Animations --- */
+        @keyframes pulseSimple {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        @keyframes drawCheck {
+            0% { stroke-dashoffset: 20; } /* Start invisible */
+            100% { stroke-dashoffset: 0; } /* Draw in */
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes shimmer {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        @keyframes wiggle {
+             0%, 100% { transform: rotate(0deg); }
+             25% { transform: rotate(-3deg); }
+             75% { transform: rotate(3deg); }
+        }
+
+
+        /* --- Icon 1: Originality (Document with Spark) --- */
+        .icon-originality .doc-outline { fill: none; stroke: var(--color-black); stroke-width: 2; }
+        .icon-originality .doc-lines { stroke: var(--color-black); stroke-width: 1.5; }
+        .icon-originality .spark { fill: var(--color-celeste); animation: pulseSpark 2s infinite ease-in-out; }
+        @keyframes pulseSpark { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } }
+
+        /* --- Icon 2: Confidentiality (Padlock) --- */
+        .icon-confidentiality .lock-body { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 2; }
+        .icon-confidentiality .lock-shackle { fill: none; stroke: var(--color-black); stroke-width: 3; animation: swingShackle 3s infinite ease-in-out; transform-origin: center bottom; }
+        .icon-confidentiality .keyhole { fill: var(--color-black); }
+        .icon-confidentiality .keyhole-line { stroke: var(--color-black); stroke-width: 2; }
+        @keyframes swingShackle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+
+        /* --- Icon 3: On-Time Delivery (Clock) --- */
+        .icon-on-time .clock-face { fill: var(--color-white); stroke: var(--color-black); stroke-width: 2; }
+        .icon-on-time .clock-hands { stroke: var(--color-celeste); stroke-width: 2.5; stroke-linecap: round; transform-origin: center center; }
+        .icon-on-time .hour-hand { animation: rotateHourHand 12s linear infinite; }
+        .icon-on-time .minute-hand { animation: rotateMinuteHand 1s linear infinite; }
+        .icon-on-time .center-dot { fill: var(--color-black); }
+        @keyframes rotateHourHand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotateMinuteHand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- Icon 4: Expert Writers (Graduation Cap) --- */
+        .icon-expert .cap-body { fill: var(--color-black); }
+        .icon-expert .cap-top { fill: var(--color-black); }
+        .icon-expert .tassel { stroke: var(--color-celeste); stroke-width: 2; fill: none; animation: swingTassel 2.5s infinite ease-in-out; transform-origin: 30px 25px; }
+        .icon-expert .tassel-end { fill: var(--color-celeste); animation: swingTassel 2.5s infinite ease-in-out; transform-origin: 30px 25px; }
+        @keyframes swingTassel { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(15deg); } }
+
+        /* --- Icon 5: Secure Payments (Card + Shield) --- */
+        .icon-secure-payment .card { fill: var(--color-white); stroke: var(--color-black); stroke-width: 1.5; }
+        .icon-secure-payment .card-line { stroke: var(--color-black); stroke-width: 2; }
+        .icon-secure-payment .shield { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 1.5; animation: pulseSimple 2.5s infinite ease-in-out; }
+        .icon-secure-payment .shield-check { fill: none; stroke: var(--color-white); stroke-width: 2.5; stroke-linecap: round; }
+
+        /* --- Icon 6: Free Revisions (Refresh Arrow) --- */
+        .icon-revisions .arrow-circle { fill: none; stroke: var(--color-celeste); stroke-width: 3; }
+        .icon-revisions .arrow-head { fill: var(--color-celeste); }
+        .icon-revisions { animation: spin 4s linear infinite; } /* Spin the whole SVG */
+
+        /* --- Icon 7: 24/7 Support (Headset) --- */
+        .icon-support .headband { fill: none; stroke: var(--color-black); stroke-width: 3; }
+        .icon-support .earpiece { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 2; }
+        .icon-support .mic { fill: none; stroke: var(--color-black); stroke-width: 2; }
+        .icon-support .mic-end { fill: var(--color-black); }
+        .icon-support .waves { fill: none; stroke: var(--color-celeste); stroke-width: 1.5; opacity: 0; animation: radiateWaves 2s infinite ease-out; }
+        @keyframes radiateWaves {
+            0% { stroke-width: 1; opacity: 1; transform: scale(0.5); }
+            100% { stroke-width: 0; opacity: 0; transform: scale(1.5); }
+        }
+
+        /* --- Icon 8: Satisfaction Guarantee (Thumbs Up) --- */
+        .icon-satisfaction .thumb { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 2; animation: wiggle 2s infinite ease-in-out; transform-origin: 25px 50px; }
+
+        /* --- Icon 9: Essay Writing (Quill Pen) --- */
+        .icon-essay .quill { fill: var(--color-black); }
+        .icon-essay .nib { fill: var(--color-celeste); }
+        .icon-essay .line { fill: none; stroke: var(--color-celeste); stroke-width: 2; stroke-dasharray: 5 3; animation: writeLine 3s linear infinite; }
+        @keyframes writeLine {
+            from { stroke-dashoffset: 0; }
+            to { stroke-dashoffset: 16; } /* 2 * (5+3) */
+        }
+
+        /* --- Icon 10: Research Support (Magnifying Glass) --- */
+        .icon-research .handle { fill: var(--color-black); }
+        .icon-research .lens-frame { fill: none; stroke: var(--color-black); stroke-width: 3; }
+        .icon-research .lens-glass { fill: var(--color-celeste); opacity: 0.5; }
+        .icon-research { animation: scanDoc 4s infinite ease-in-out; }
+        @keyframes scanDoc {
+            0%, 100% { transform: translate(0, 0) rotate(-45deg); }
+            25% { transform: translate(-3px, 3px) rotate(-50deg); }
+            75% { transform: translate(3px, -3px) rotate(-40deg); }
+        }
+
+        /* --- Icon 11: Technical/Code Help (Brackets) --- */
+        .icon-code .bracket { fill: none; stroke: var(--color-celeste); stroke-width: 4; stroke-linecap: round; }
+        .icon-code .left-bracket { animation: pulseBracketLeft 2s infinite ease-in-out; }
+        .icon-code .right-bracket { animation: pulseBracketRight 2s infinite ease-in-out; }
+        @keyframes pulseBracketLeft { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
+        @keyframes pulseBracketRight { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
+
+        /* --- Icon 12: Editing/Proofreading (Pencil + Check) --- */
+        .icon-editing .pencil-body { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 1; }
+        .icon-editing .pencil-tip { fill: var(--color-black); }
+        .icon-editing .pencil-eraser { fill: #FFAAAA; } /* Pinkish eraser */
+        .icon-editing .check { fill: none; stroke: var(--color-black); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 20; animation: drawCheck 1.5s 0.5s infinite ease-out; }
+        .icon-editing { animation: wiggle 3s infinite ease-in-out; }
+
+        /* --- Icon 13: Homework Help (Checklist) --- */
+        .icon-homework .list-bg { fill: var(--color-white); stroke: var(--color-black); stroke-width: 1.5; }
+        .icon-homework .list-line { stroke: var(--color-black); stroke-width: 1; }
+        .icon-homework .check { fill: none; stroke: var(--color-celeste); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 15; stroke-dashoffset: 15; }
+        .icon-homework .check1 { animation: drawCheck 1s 0.5s infinite ease-out; }
+        .icon-homework .check2 { animation: drawCheck 1s 1.0s infinite ease-out; } /* Stagger animation */
+
+        /* --- Icon 14: Time Saving (Fast Clock) --- */
+        .icon-time-saving .clock-face { fill: var(--color-white); stroke: var(--color-black); stroke-width: 2; }
+        .icon-time-saving .clock-hands { stroke: var(--color-celeste); stroke-width: 2.5; stroke-linecap: round; transform-origin: center center; }
+        .icon-time-saving .minute-hand { animation: rotateMinuteHand 0.5s linear infinite; } /* Faster */
+        .icon-time-saving .center-dot { fill: var(--color-black); }
+        .icon-time-saving .speed-lines line { stroke: var(--color-celeste); stroke-width: 1.5; animation: dash 0.5s linear infinite; }
+        @keyframes dash { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 10; } }
+
+        /* --- Icon 15: Stress Reduction (Heartbeat) --- */
+        .icon-stress-reduction .heart { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 1.5; animation: pulseSimple 1.5s infinite ease-in-out; }
+        .icon-stress-reduction .line { fill: none; stroke: var(--color-black); stroke-width: 2; stroke-linecap: round; }
+
+        /* --- Icon 16: Plagiarism-Free (Doc + X) --- */
+        .icon-plagiarism-free .doc-outline { fill: var(--color-white); stroke: var(--color-black); stroke-width: 2; }
+        .icon-plagiarism-free .cross { stroke: #FF6347; stroke-width: 4; stroke-linecap: round; animation: drawCross 1s infinite alternate ease-in-out; }
+        @keyframes drawCross {
+             0% { stroke-dasharray: 0 50; } /* Line 1 invisible, Line 2 invisible */
+             50% { stroke-dasharray: 25 25; } /* Line 1 half drawn, Line 2 invisible */
+             100% { stroke-dasharray: 50 0; } /* Line 1 fully drawn, Line 2 drawn */
+        }
+
+        /* --- Icon 17: AI-Free (Brain) --- */
+        .icon-ai-free .brain { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 1.5; animation: pulseSimple 2s infinite ease-in-out; }
+
+        /* --- Icon 18: Track Progress (Graph Up) --- */
+        .icon-progress .axis { stroke: var(--color-black); stroke-width: 1.5; }
+        .icon-progress .graph-line { fill: none; stroke: var(--color-celeste); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLineUp 3s infinite linear; }
+        @keyframes drawLineUp {
+             from { stroke-dashoffset: 100; }
+             to { stroke-dashoffset: 0; }
+        }
+
+        /* --- Icon 19: Choose Expert (Profile) --- */
+        .icon-choose-expert .head { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 1.5; }
+        .icon-choose-expert .body { fill: var(--color-celeste); stroke: var(--color-black); stroke-width: 1.5; }
+        .icon-choose-expert .highlight { fill: none; stroke: var(--color-celeste); stroke-width: 3; rx: 15; ry: 15; opacity: 0.7; animation: shimmer 2s infinite; }
+
+        /* --- Icon 20: Wide Subject Coverage (Globe) --- */
+        .icon-subjects .globe-sphere { fill: var(--color-celeste); }
+        .icon-subjects .globe-lines { fill: none; stroke: var(--color-white); stroke-width: 1; opacity: 0.8; }
+        .icon-subjects { animation: spin 10s linear infinite; } /* Spin the whole globe */
+
+    </style>
+</head>
+<body>
+
+    <div class="icon-container">
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-originality" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="doc-outline" d="M15 5 H45 L55 15 V55 H15 Z" /> <path class="doc-outline" d="M45 5 V15 H55" />
+                <line class="doc-lines" x1="20" y1="25" x2="50" y2="25" /> <line class="doc-lines" x1="20" y1="32" x2="50" y2="32" /> <line class="doc-lines" x1="20" y1="39" x2="40" y2="39" />
+                <polygon class="spark" points="30,35 33,45 40,48 33,51 30,61 27,51 20,48 27,45" transform="translate(0 -5)"/>
+            </svg>
+            <div class="icon-label">100% Originality</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-confidentiality" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="lock-shackle" d="M30 20 C 30 10, 45 10, 45 20" /> <rect class="lock-body" x="15" y="20" width="30" height="30" rx="5" />
+                <circle class="keyhole" cx="30" cy="35" r="3" /> <line class="keyhole-line" x1="30" y1="38" x2="30" y2="45"/>
+            </svg>
+            <div class="icon-label">Confidentiality</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-on-time" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <circle class="clock-face" cx="30" cy="30" r="25" />
+                <line class="clock-hands hour-hand" x1="30" y1="30" x2="30" y2="15" /> <line class="clock-hands minute-hand" x1="30" y1="30" x2="45" y2="30" />
+                <circle class="center-dot" cx="30" cy="30" r="3" />
+            </svg>
+            <div class="icon-label">On-Time Delivery</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-expert" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="cap-body" d="M5 25 Q30 15, 55 25 L30 40 Z" /> <rect class="cap-top" x="10" y="20" width="40" height="5" rx="1"/>
+                <line class="tassel" x1="30" y1="25" x2="45" y2="35" /> <circle class="tassel-end" cx="45" cy="35" r="3"/>
+            </svg>
+            <div class="icon-label">Expert Writers</div>
+        </div>
+
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-secure-payment" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <rect class="card" x="5" y="15" width="40" height="25" rx="3"/>
+                <line class="card-line" x1="5" y1="22" x2="45" y2="22"/>
+                <path class="shield" d="M35 30 L 35 35 Q 35 45, 45 50 Q 55 45, 55 35 L 55 30 L 45 25 Z" />
+                <polyline class="shield-check" points="40,38 44,42 50,35" />
+            </svg>
+            <div class="icon-label">Secure Payments</div>
+        </div>
+         <div class="icon-wrapper">
+             <svg class="animated-icon icon-revisions" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="arrow-circle" d="M 50 30 A 20 20 0 1 1 30 10" />
+                <polygon class="arrow-head" points="30,0 30,20 40,10" />
+            </svg>
+            <div class="icon-label">Free Revisions</div>
+        </div>
+         <div class="icon-wrapper">
+            <svg class="animated-icon icon-support" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                 <path class="headband" d="M 10 30 A 20 20 0 0 1 50 30" />
+                 <rect class="earpiece" x="5" y="25" width="10" height="15" rx="3"/>
+                 <rect class="earpiece" x="45" y="25" width="10" height="15" rx="3"/>
+                 <path class="mic" d="M 45 35 Q 40 50 25 50" />
+                 <circle class="mic-end" cx="25" cy="50" r="4"/>
+                 <circle class="waves" cx="25" cy="50" r="8"/>
+                 <circle class="waves" cx="25" cy="50" r="12" style="animation-delay: 0.5s;"/>
+            </svg>
+            <div class="icon-label">24/7 Support</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-satisfaction" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="thumb" d="M15 55 L15 30 C15 25 20 20 25 20 L30 20 C35 20 40 25 40 30 L40 35 L45 35 C50 35 50 40 50 40 L50 55 L15 55 M25 20 L25 10 C25 5 30 5 30 10 L30 20" />
+            </svg>
+            <div class="icon-label">Satisfaction Guarantee</div>
+        </div>
+
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-essay" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="quill" d="M 50 10 Q 40 30 20 50 L 15 55 L 10 50 Q 30 40 40 20 Z" />
+                <polygon class="nib" points="19,51 15,55 11,51" />
+                <line class="line" x1="15" y1="55" x2="50" y2="55"/>
+            </svg>
+            <div class="icon-label">Essay Writing</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-research" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-45deg);">
+                <circle class="lens-frame" cx="25" cy="25" r="15"/>
+                <circle class="lens-glass" cx="25" cy="25" r="14"/>
+                <rect class="handle" x="22" y="40" width="6" height="15" rx="2"/>
+            </svg>
+            <div class="icon-label">Research Support</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-code" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <polyline class="bracket left-bracket" points="20,15 10,30 20,45" />
+                <polyline class="bracket right-bracket" points="40,15 50,30 40,45" />
+            </svg>
+            <div class="icon-label">Technical Help</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-editing" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                 <polygon class="pencil-body" points="45,10 50,15 20,45 15,40" />
+                 <polygon class="pencil-tip" points="15,40 20,45 10,50" />
+                 <rect class="pencil-eraser" x="43" y="8" width="9" height="9" transform="rotate(45 47.5 12.5)" />
+                 <polyline class="check" points="15,25 25,35 40,15"/>
+            </svg>
+            <div class="icon-label">Editing & Proofreading</div>
+        </div>
+
+        <div class="icon-wrapper">
+             <svg class="animated-icon icon-homework" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <rect class="list-bg" x="10" y="5" width="40" height="50" rx="3"/>
+                <line class="list-line" x1="25" y1="15" x2="45" y2="15"/>
+                <line class="list-line" x1="25" y1="25" x2="45" y2="25"/>
+                <line class="list-line" x1="25" y1="35" x2="45" y2="35"/>
+                <line class="list-line" x1="25" y1="45" x2="45" y2="45"/>
+                <polyline class="check check1" points="15,12 20,17 25,10"/>
+                <polyline class="check check2" points="15,22 20,27 25,20"/>
+            </svg>
+            <div class="icon-label">Homework Help</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-time-saving" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                 <circle class="clock-face" cx="30" cy="30" r="20" />
+                 <line class="clock-hands minute-hand" x1="30" y1="30" x2="45" y2="30" />
+                 <circle class="center-dot" cx="30" cy="30" r="2" />
+                 <g class="speed-lines" stroke-dasharray="5">
+                    <line x1="5" y1="15" x2="15" y2="20"/>
+                    <line x1="5" y1="30" x2="15" y2="30"/>
+                    <line x1="5" y1="45" x2="15" y2="40"/>
+                 </g>
+            </svg>
+            <div class="icon-label">Time Saving</div>
+        </div>
+        <div class="icon-wrapper">
+             <svg class="animated-icon icon-stress-reduction" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                 <path class="heart" d="M30 20 C 45 5, 60 15, 30 35 C 0 15, 15 5, 30 20 Z" transform="translate(0 5)"/>
+                 <polyline class="line" points="5,50 15,50 20,45 25,55 30,50 35,50"/>
+            </svg>
+            <div class="icon-label">Stress Reduction</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-plagiarism-free" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path class="doc-outline" d="M10 5 H40 L50 15 V55 H10 Z" />
+                <line class="cross" x1="15" y1="20" x2="45" y2="50" />
+                <line class="cross" x1="45" y1="20" x2="15" y2="50" />
+            </svg>
+            <div class="icon-label">Plagiarism-Free</div>
+        </div>
+
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-ai-free" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                 <path class="brain" d="M30 5 C15 5 10 20 15 30 C5 40 15 55 30 55 C45 55 55 40 45 30 C50 20 45 5 30 5 Z M 30 5 C 35 15 35 25 30 30 M 30 55 C 25 45 25 35 30 30" />
+            </svg>
+            <div class="icon-label">AI-Free Content</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-progress" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <polyline class="axis" points="10,55 10,5 50,5" />
+                <polyline class="graph-line" points="10,50 20,40 30,25 40,20 50,10" />
+            </svg>
+            <div class="icon-label">Track Progress</div>
+        </div>
+        <div class="icon-wrapper">
+            <svg class="animated-icon icon-choose-expert" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <circle class="head" cx="30" cy="20" r="10"/>
+                <path class="body" d="M15 55 V 40 C 15 30, 45 30, 45 40 V 55 Z"/>
+                <rect class="highlight" x="10" y="5" width="40" height="50" />
+            </svg>
+            <div class="icon-label">Choose Your Expert</div>
+        </div>
+        <div class="icon-wrapper">
+             <svg class="animated-icon icon-subjects" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <circle class="globe-sphere" cx="30" cy="30" r="25"/>
+                <ellipse class="globe-lines" cx="30" cy="30" rx="10" ry="25"/>
+                <ellipse class="globe-lines" cx="30" cy="30" rx="18" ry="25"/>
+                <ellipse class="globe-lines" cx="30" cy="30" rx="23" ry="25"/>
+                <line class="globe-lines" x1="5" y1="30" x2="55" y2="30"/>
+                <line class="globe-lines" x1="10" y1="15" x2="50" y2="45"/>
+                <line class="globe-lines" x1="10" y1="45" x2="50" y2="15"/>
+            </svg>
+            <div class="icon-label">Wide Subject Coverage</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
