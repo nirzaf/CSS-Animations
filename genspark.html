@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Animated Icons</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #151616;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .icon-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .icon-container:hover::after {
+            opacity: 0.05;
+        }
+
+        .icon-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, #A0EBEB 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .icon-name {
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .icon-wrapper {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* Research & Sources Icon */
+        .research-icon .magnifier {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #151616;
+            border-radius: 50%;
+            top: 20px;
+            left: 25px;
+            transform-origin: 80% 80%;
+            animation: magnify 4s infinite ease-in-out;
+            overflow: visible;
+        }
+
+        .research-icon .magnifier::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 25px;
+            background: #151616;
+            bottom: -18px;
+            right: -2px;
+            transform: rotate(45deg);
+        }
+
+        .research-icon .magnifier::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(160, 235, 235, 0.3);
+            top: 5px;
+            left: 5px;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        .research-icon .document {
+            position: absolute;
+            width: 25px;
+            height: 32px;
+            background: white;
+            border: 2px solid #151616;
+            border-radius: 3px;
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-5deg);
+            animation: floatDocument 3s infinite ease-in-out;
+        }
+
+        .research-icon .document::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 2px;
+            background: #151616;
+            top: 8px;
+            left: 5px;
+        }
+
+        .research-icon .document::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 2px;
+            background: #151616;
+            top: 14px;
+            left: 5px;
+        }
+
+        .research-icon .document-2 {
+            position: absolute;
+            width: 25px;
+            height: 32px;
+            background: white;
+            border: 2px solid #151616;
+            border-radius: 3px;
+            bottom: 25px;
+            right: 30px;
+            transform: rotate(5deg);
+            animation: floatDocument 3s infinite ease-in-out reverse;
+        }
+
+        .research-icon .document-2::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 2px;
+            background: #151616;
+            top: 8px;
+            left: 5px;
+        }
+
+        .research-icon .document-2::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 2px;
+            background: #151616;
+            top: 14px;
+            left: 5px;
+        }
+
+        @keyframes magnify {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.05); }
+        }
+
+        @keyframes floatDocument {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-5px) rotate(-8deg); }
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Essay Writing Icon */
+        .writing-icon .paper {
+            position: absolute;
+            width: 50px;
+            height: 65px;
+            background: white;
+            border: 2px solid #151616;
+            border-radius: 3px;
+            top: 15px;
+            left: 25px;
+        }
+
+        .writing-icon .paper::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: #151616;
+            top: 15px;
+            left: 10px;
+        }
+
+        .writing-icon .paper::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 2px;
+            background: #151616;
+            top: 22px;
+            left: 10px;
+        }
+
+        .writing-icon .pencil {
+            position: absolute;
+            width: 8px;
+            height: 45px;
+            background: #151616;
+            top: 40px;
+            left: 33px;
+            transform-origin: bottom center;
+            animation: writing 3s infinite ease-in-out;
+        }
+
+        .writing-icon .pencil-tip {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 10px solid #A0EBEB;
+            top: 30px;
+            left: 33px;
+            animation: writing 3s infinite ease-in-out;
+        }
+
+        .writing-icon .cursor {
+            position: absolute;
+            width: 5px;
+            height: 2px;
+            background: #A0EBEB;
+            top: 55px;
+            left: 40px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes writing {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 0; }
+            50%, 100% { opacity: 1; }
+        }
+
+        /* Math Solver Icon */
+        .math-icon .calculator {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: #151616;
+            border-radius: 5px;
+            top: 15px;
+            left: 25px;
+            overflow: hidden;
+        }
+
+        .math-icon .calculator::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 15px;
+            background: #A0EBEB;
+            top: 10px;
+            left: 5px;
+            border-radius: 2px;
+            animation: displayGlow 3s infinite alternate;
+        }
+
+        .math-icon .symbol-pi {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: #A0EBEB;
+            top: 30px;
+            right: 15px;
+            animation: rotateMath 7s infinite linear;
+            transform-origin: 15px 50px;
+        }
+
+        .math-icon .symbol-sigma {
+            position: absolute;
+            font-size: 28px;
+            font-weight: bold;
+            color: #A0EBEB;
+            top: 10px;
+            right: 35px;
+            animation: rotateMath 7s infinite linear 0.5s;
+            transform-origin: -5px 50px;
+        }
+
+        .math-icon .symbol-root {
+            position: absolute;
+            font-size: 26px;
+            font-weight: bold;
+            color: #A0EBEB;
+            top: 60px;
+            right: 35px;
+            animation: rotateMath 7s infinite linear 1s;
+            transform-origin: -5px 0px;
+        }
+
+        @keyframes rotateMath {
+            0% { transform: rotate(0deg) translateX(0) translateY(0); }
+            25% { transform: rotate(90deg) translateX(5px) translateY(5px); }
+            50% { transform: rotate(180deg) translateX(0) translateY(10px); }
+            75% { transform: rotate(270deg) translateX(-5px) translateY(5px); }
+            100% { transform: rotate(360deg) translateX(0) translateY(0); }
+        }
+
+        @keyframes displayGlow {
+            0% { background: #A0EBEB; }
+            100% { background: #d2f5f5; }
+        }
+
+        /* Presentation Design Icon */
+        .presentation-icon .screen {
+            position: absolute;
+            width: 70px;
+            height: 50px;
+            background: #151616;
+            border-radius: 5px;
+            top: 20px;
+            left: 15px;
+            overflow: hidden;
+        }
+
+        .presentation-icon .screen::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #151616;
+            bottom: -15px;
+            left: 30px;
+        }
+
+        .presentation-icon .screen::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background: #151616;
+            bottom: -20px;
+            left: 20px;
+            border-radius: 2px;
+        }
+
+        .presentation-icon .slide {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: white;
+            border-radius: 2px;
+            top: 5px;
+            left: 5px;
+            transform: translateX(-100%);
+            animation: slideTransition 5s infinite;
+        }
+
+        .presentation-icon .slide::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 4px;
+            background: #A0EBEB;
+            top: 15px;
+            left: 10px;
+            border-radius: 2px;
+        }
+
+        .presentation-icon .slide::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 4px;
+            background: #A0EBEB;
+            top: 25px;
+            left: 10px;
+            border-radius: 2px;
+        }
+
+        @keyframes slideTransition {
+            0%, 20% { transform: translateX(-100%); }
+            25%, 45% { transform: translateX(0); }
+            50%, 70% { transform: translateX(100%); }
+            75%, 95% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Citation Generator Icon */
+        .citation-icon .book {
+            position: absolute;
+            width: 50px;
+            height: 40px;
+            background: #151616;
+            border-radius: 3px 8px 8px 3px;
+            top: 30px;
+            left: 20px;
+            transform-origin: left center;
+            animation: bookOpen 5s infinite alternate ease-in-out;
+        }
+
+        .citation-icon .book::before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 40px;
+            background: #A0EBEB;
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .citation-icon .book::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 5px;
+            background: white;
+            left: 7px;
+            top: 10px;
+            border-radius: 2px;
+        }
+
+        .citation-icon .quotation {
+            position: absolute;
+            font-size: 35px;
+            font-weight: bold;
+            color: #A0EBEB;
+            top: 25px;
+            right: 15px;
+            animation: spin 4s infinite linear;
+        }
+
+        .citation-icon .citation-spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #A0EBEB;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        .citation-icon .citation-spark:nth-child(1) {
+            top: 20px;
+            right: 30px;
+            animation-delay: 0s;
+        }
+
+        .citation-icon .citation-spark:nth-child(2) {
+            top: 50px;
+            right: 20px;
+            animation-delay: 0.3s;
+        }
+
+        .citation-icon .citation-spark:nth-child(3) {
+            top: 35px;
+            right: 45px;
+            animation-delay: 0.6s;
+        }
+
+        .citation-icon .citation-spark:nth-child(4) {
+            top: 60px;
+            right: 35px;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes bookOpen {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(30deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(2); opacity: 1; }
+        }
+
+        /* Code Assistance Icon */
+        .code-icon .bracket-left {
+            position: absolute;
+            width: 20px;
+            height: 50px;
+            border: 3px solid #151616;
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            top: 25px;
+            left: 20px;
+            animation: bracketPulse 3s infinite alternate;
+        }
+
+        .code-icon .bracket-right {
+            position: absolute;
+            width: 20px;
+            height: 50px;
+            border: 3px solid #151616;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+            top: 25px;
+            right: 20px;
+            animation: bracketPulse 3s infinite alternate reverse;
+        }
+
+        .code-icon .code-line {
+            position: absolute;
+            height: 3px;
+            background: #A0EBEB;
+            border-radius: 1px;
+            left: 45px;
+            animation: codeBlink 2s infinite alternate;
+        }
+
+        .code-icon .code-line:nth-child(1) {
+            width: 25px;
+            top: 35px;
+            animation-delay: 0s;
+        }
+
+        .code-icon .code-line:nth-child(2) {
+            width: 15px;
+            top: 45px;
+            animation-delay: 0.3s;
+        }
+
+        .code-icon .code-line:nth-child(3) {
+            width: 20px;
+            top: 55px;
+            animation-delay: 0.6s;
+        }
+
+        .code-icon .code-line:nth-child(4) {
+            width: 30px;
+            top: 65px;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes bracketPulse {
+            0% { transform: scaleY(1); }
+            100% { transform: scaleY(1.1); }
+        }
+
+        @keyframes codeBlink {
+            0%, 20% { opacity: 0.3; width: 15px; }
+            80%, 100% { opacity: 1; width: 30px; }
+        }
+
+        /* Plagiarism Checker Icon */
+        .plagiarism-icon .shield {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            background: #151616;
+            border-radius: 25px 25px 5px 5px;
+            top: 20px;
+            left: 25px;
+            overflow: hidden;
+        }
+
+        .plagiarism-icon .shield::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, transparent 50%, #A0EBEB 100%);
+            opacity: 0;
+            animation: scan 3s infinite;
+        }
+
+        .plagiarism-icon .checkmark {
+            position: absolute;
+            width: 25px;
+            height: 15px;
+            border-bottom: 4px solid #A0EBEB;
+            border-left: 4px solid #A0EBEB;
+            transform: rotate(-45deg);
+            top: 40px;
+            left: 37px;
+            animation: check 2s infinite alternate;
+        }
+
+        @keyframes scan {
+            0% { opacity: 0; transform: translateY(-60px) scale(0.1); }
+            50% { opacity: 0.5; }
+            100% { opacity: 0; transform: translateY(60px) scale(1.5); }
+        }
+
+        @keyframes check {
+            0% { transform: rotate(-45deg) scale(1); }
+            100% { transform: rotate(-45deg) scale(1.1); border-color: #d2f5f5; }
+        }
+
+        /* Subject Tutor Help Icon */
+        .tutor-icon .academic-hat {
+            position: absolute;
+            width: 60px;
+            height: 15px;
+            background: #151616;
+            border-radius: 5px;
+            top: 50px;
+            left: 20px;
+            animation: hatBounce 3s infinite;
+        }
+
+        .tutor-icon .academic-hat::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background: #151616;
+            border-radius: 5px 5px 0 0;
+            top: -20px;
+            left: 15px;
+            animation: hatBounce 3s infinite;
+        }
+
+        .tutor-icon .academic-hat::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #A0EBEB;
+            border-radius: 50%;
+            top: -5px;
+            left: 25px;
+        }
+
+        .tutor-icon .speech-bubble {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-radius: 15px;
+            background: transparent;
+            top: 40px;
+            right: 20px;
+            animation: bubbleGrow 3s infinite alternate;
+        }
+
+        .tutor-icon .speech-bubble::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 15px 0;
+            border-color: transparent #A0EBEB transparent transparent;
+            left: -10px;
+            bottom: 0;
+            opacity: 0;
+            animation: bubbleDetailGrow 3s infinite alternate;
+        }
+
+        @keyframes hatBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes bubbleGrow {
+            0% { width: 0; height: 0; background: transparent; }
+            100% { width: 40px; height: 30px; background: #A0EBEB; }
+        }
+
+        @keyframes bubbleDetailGrow {
+            0% { opacity: 0; }
+            60% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Deadline Tracker Icon */
+        .deadline-icon .calendar {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 3px solid #151616;
+            border-radius: 5px;
+            top: 25px;
+            left: 20px;
+        }
+
+        .deadline-icon .calendar::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            background: #151616;
+            top: -3px;
+            left: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .deadline-icon .calendar::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: #151616;
+            top: 15px;
+            left: 5px;
+        }
+
+        .deadline-icon .calendar-grid {
+            position: absolute;
+            display: grid;
+            grid-template-columns: repeat(3, 8px);
+            grid-gap: 4px;
+            top: 22px;
+            left: 8px;
+        }
+
+        .deadline-icon .calendar-day {
+            width: 8px;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 2px;
+        }
+
+        .deadline-icon .calendar-day:nth-child(5) {
+            background: #A0EBEB;
+            animation: dayHighlight 2s infinite alternate;
+        }
+
+        .deadline-icon .clock {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border: 3px solid #151616;
+            border-radius: 50%;
+            top: 40px;
+            right: 20px;
+        }
+
+        .deadline-icon .clock-hand {
+            position: absolute;
+            background: #151616;
+            transform-origin: 50% 0;
+            border-radius: 1px;
+        }
+
+        .deadline-icon .clock-hand-hour {
+            width: 2px;
+            height: 7px;
+            top: 12px;
+            left: 11px;
+            animation: clockHourHand 10s infinite linear;
+        }
+
+        .deadline-icon .clock-hand-minute {
+            width: 2px;
+            height: 10px;
+            top: 12px;
+            left: 11px;
+            animation: clockMinuteHand 2s infinite linear;
+        }
+
+        .deadline-icon .deadline-ring {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 3px solid transparent;
+            border-top: 3px solid #A0EBEB;
+            border-radius: 50%;
+            top: 35px;
+            right: 15px;
+            animation: ringRotate 2s infinite linear;
+        }
+
+        @keyframes dayHighlight {
+            0% { transform: scale(1); background: #A0EBEB; }
+            100% { transform: scale(1.2); background: #d2f5f5; }
+        }
+
+        @keyframes clockHourHand {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes clockMinuteHand {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes ringRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Idea Brainstorm Icon */
+        .brainstorm-icon .lightbulb {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: #151616;
+            border-radius: 15px 15px 5px 5px;
+            top: 25px;
+            left: 35px;
+            overflow: hidden;
+        }
+
+        .brainstorm-icon .lightbulb::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #A0EBEB;
+            border-radius: 50%;
+            top: 5px;
+            left: 5px;
+            animation: lightGlow 2s infinite alternate;
+        }
+
+        .brainstorm-icon .lightbulb::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 5px;
+            background: #151616;
+            bottom: 0;
+            left: 10px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .brainstorm-icon .bulb-base {
+            position: absolute;
+            width: 16px;
+            height: 8px;
+            background: #151616;
+            border-radius: 0 0 3px 3px;
+            top: 65px;
+            left: 42px;
+        }
+
+        .brainstorm-icon .thought {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #A0EBEB;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: orbit 5s infinite linear;
+        }
+
+        .brainstorm-icon .thought:nth-child(1) {
+            top: 20px;
+            left: 35px;
+            animation-delay: 0s;
+            transform-origin: 50% 65px;
+        }
+
+        .brainstorm-icon .thought:nth-child(2) {
+            top: 35px;
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            animation-delay: -1s;
+            transform-origin: -15px 30px;
+        }
+
+        .brainstorm-icon .thought:nth-child(3) {
+            bottom: 20px;
+            right: 30px;
+            width: 12px;
+            height: 12px;
+            animation-delay: -2s;
+            transform-origin: -20px -5px;
+        }
+
+        .brainstorm-icon .thought:nth-child(4) {
+            bottom: 30px;
+            left: 25px;
+            width: 8px;
+            height: 8px;
+            animation-delay: -3s;
+            transform-origin: 25px -10px;
+        }
+
+        @keyframes lightGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(25px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(25px) rotate(-360deg); }
+        }
+
+        .page-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #151616, #A0EBEB);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-3 page-title">Educational Website Animated Icons</h1>
+        <p class="text-center text-gray-700 mb-10">A collection of 10 animated CSS icons designed for a modern educational platform</p>
+
+        <div class="icon-grid">
+            <!-- Research & Sources Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper research-icon">
+                    <div class="magnifier"></div>
+                    <div class="document"></div>
+                    <div class="document-2"></div>
+                </div>
+                <div class="icon-name">Research & Sources</div>
+            </div>
+
+            <!-- Essay Writing Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper writing-icon">
+                    <div class="paper"></div>
+                    <div class="pencil"></div>
+                    <div class="pencil-tip"></div>
+                    <div class="cursor"></div>
+                </div>
+                <div class="icon-name">Essay Writing</div>
+            </div>
+
+            <!-- Math Solver Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper math-icon">
+                    <div class="calculator"></div>
+                    <div class="symbol-pi">π</div>
+                    <div class="symbol-sigma">Σ</div>
+                    <div class="symbol-root">√</div>
+                </div>
+                <div class="icon-name">Math Solver</div>
+            </div>
+
+            <!-- Presentation Design Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper presentation-icon">
+                    <div class="screen"></div>
+                    <div class="slide"></div>
+                </div>
+                <div class="icon-name">Presentation Design</div>
+            </div>
+
+            <!-- Citation Generator Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper citation-icon">
+                    <div class="book"></div>
+                    <div class="quotation">"</div>
+                    <div class="citation-spark"></div>
+                    <div class="citation-spark"></div>
+                    <div class="citation-spark"></div>
+                    <div class="citation-spark"></div>
+                </div>
+                <div class="icon-name">Citation Generator</div>
+            </div>
+
+            <!-- Code Assistance Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper code-icon">
+                    <div class="bracket-left"></div>
+                    <div class="bracket-right"></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"></div>
+                </div>
+                <div class="icon-name">Code Assistance</div>
+            </div>
+
+            <!-- Plagiarism Checker Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper plagiarism-icon">
+                    <div class="shield"></div>
+                    <div class="checkmark"></div>
+                </div>
+                <div class="icon-name">Plagiarism Checker</div>
+            </div>
+
+            <!-- Subject Tutor Help Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper tutor-icon">
+                    <div class="academic-hat"></div>
+                    <div class="speech-bubble"></div>
+                </div>
+                <div class="icon-name">Subject Tutor Help</div>
+            </div>
+
+            <!-- Deadline Tracker Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper deadline-icon">
+                    <div class="calendar"></div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                    </div>
+                    <div class="clock">
+                        <div class="clock-hand clock-hand-hour"></div>
+                        <div class="clock-hand clock-hand-minute"></div>
+                    </div>
+                    <div class="deadline-ring"></div>
+                </div>
+                <div class="icon-name">Deadline Tracker</div>
+            </div>
+
+            <!-- Idea Brainstorm Icon -->
+            <div class="icon-container">
+                <div class="icon-wrapper brainstorm-icon">
+                    <div class="lightbulb"></div>
+                    <div class="bulb-base"></div>
+                    <div class="thought"></div>
+                    <div class="thought"></div>
+                    <div class="thought"></div>
+                    <div class="thought"></div>
+                </div>
+                <div class="icon-name">Idea Brainstorm</div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center text-gray-600">
+            <p>These icons use pure CSS animations and are designed to be visually engaging while clearly conveying their purpose.</p>
+            <p class="mt-2">Color palette: Dark (#151616), White (#FFFFFF), Celeste (#A0EBEB)</p>
+        </div>
+    </div>
+</body>
+</html>
